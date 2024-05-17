@@ -1,0 +1,46 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+#navbar {
+    /* overflow: hidden; */
+    font-family: Arial;
+    position: fixed;
+    top: 0;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    z-index: 1;
+}
+
+.container {
+    margin-left: 2rem;
+    margin-top: 2rem;
+    align-items: center;
+}
+
+.logo img{
+    width: 70px;
+    height: 40px;
+}
+
+.logo {
+    margin-right: 2rem;
+}
+
+.logo li{
+    display: inline;
+    text-align: center;
+}
+
+.logo li a {
+    text-decoration: none;
+    color: #000;
+    padding: 10px 20px;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 500;
+}
