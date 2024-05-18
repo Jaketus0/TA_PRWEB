@@ -13,8 +13,8 @@
 <body>
     <div class="container">
         <div class="login">
-            <h1>Login Form</h1>
-            <form name="form" action="conf/login.php" method="POST">
+            <h1>Sign Up Form</h1>
+            <form name="form" action="conf/signup.php" method="POST">
                 <div class="input-box">
                     <input type="email" name="email" placeholder="Email">
                     <i class="fa fa-envelope"></i>
@@ -25,11 +25,7 @@
                     <i class="fa fa-lock"></i>
                 </div>
 
-                <button type="submit" name="submit" value="login">LOGIN</button>
-
-                <div class="links">
-                    <a href="daftar.php">Sign Up Here!</a>
-                </div>
+                <button type="submit" name="signup" value="signup">Sign Up</button>
             </form>
         </div>
     </div>

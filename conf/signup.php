@@ -1,17 +1,14 @@
 <?php
     include 'connection.php';
-    if(isset($_POST['submit'])) {
+    if(isset($_POST['signup'])) {
         $email = $_POST['email'];
         $pass = $_POST['password'];
-        $query = "SELECT * FROM user_info WHERE email='$email' AND password='$pass'";
+        $query = "INSERT INTO user_info(email, password) VALUES('$email','$pass');";
         $result = mysqli_query($conn, $query);
-        if(mysqli_num_rows($result) > 0) {
-            header('Location: ../home.php');
+        if($result) {
+            header("Location: ../index.php");
         } else {
-            echo "<script>
-                window.location.href='../index.php?eror';
-                alert('Invalid Email or Password');
-                </script>";
+            echo "Failed to Sign Up!";
         }
     }
 ?>
