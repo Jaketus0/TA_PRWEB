@@ -16,12 +16,12 @@
             <h1>Login Form</h1>
             <form name="form" action="conf/login.php" method="POST">
                 <div class="input-box">
-                    <input type="email" name="email" placeholder="Email">
+                    <input type="email" name="email" placeholder="Email" required>
                     <i class="fa fa-envelope"></i>
                 </div>
 
                 <div class="input-box">
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password" placeholder="Password" required>
                     <i class="fa fa-lock"></i>
                 </div>
 

@@ -1,3 +1,13 @@
+<?php
+    include 'conf/connection.php';
+    session_start();
+    if(!isset($_SESSION['email'])) {
+        echo "<script>
+            alert('You must login first!!');
+            window.location.href='index.php';
+            </script>";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +25,7 @@
                     <li><a href="index.php">Home</a></li>    
                     <li><a href="ticket.php">Ticket</a></li>
                     <li><a href="contact.php">Contact</a></li>
+                    <li><a href="conf/logout.php">Logout</a></li>
                     <li><input type="text" id="search"></li>
                 </ul>
             </div>
