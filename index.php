@@ -1,25 +1,39 @@
+<?php
+    include 'conf/connection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AVH Tickets</title>
-    <link rel="stylesheet" href="asset/style/style.css">
+    <link rel="stylesheet" href="asset/style/login.css">
+
 </head>
 <body>
-    <div id="navbar">
-        <div class="container">
-            <div class="logo">
-                <ul>
-                    <li><img src="asset/img/AVH.png" alt="Logo"></li>
-                    <li><a href="index.php">Home</a></li>    
-                    <li><a href="ticket.php">Ticket</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li><input type="text" id="search"></li>
-                </ul>
-            </div>
+    <div class="container">
+        <div class="login">
+            <h1>Login Form</h1>
+            <form name="form" action="conf/login.php" method="POST">
+                <div class="input-box">
+                    <input type="email" name="email" placeholder="Email">
+                    <i class="fa fa-envelope"></i>
+                </div>
+
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Password">
+                    <i class="fa fa-lock"></i>
+                </div>
+
+                <button type="submit" name="submit" value="login">LOGIN</button>
+
+                <div class="links">
+                    <a href="#">Sign Up Here!</a>
+                </div>
+            </form>
         </div>
     </div>
 </body>
 <script src="asset/js/script.js"></script>
+<script src="https://kit.fontawesome.com/ef9e5793a4.js" crossorigin="anonymous"></script>
 </html>
