@@ -44,3 +44,35 @@
     font-size: 20px;
     font-weight: 500;
 }
+
+#artist {
+    margin-top: 20vh;
+}
+
+.artist-profile img {
+    width: 15%;
+    height: 15%;
+    border-radius: 50%;
+}
+
+.artist-profile li {
+    margin: 20px;
+    display: inline;
+    text-align: center;
+}
+
+.artist-profile li a:link, a:visited, a:active {
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  letter-spacing: 1px;
+  color: black;
+  filter: grayscale(1);
+}
+
+.artist-profile li a:hover {
+  color: #ff0000;
+  filter: grayscale(0);
+  transition: 0.5s;
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2024 at 02:03 AM
+-- Generation Time: May 19, 2024 at 04:46 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `ticket_web`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `artistprofile`
+--
+
+CREATE TABLE `artistprofile` (
+  `id_artist` int(11) NOT NULL,
+  `nama_artist` varchar(255) NOT NULL,
+  `pp_artist` varchar(255) NOT NULL,
+  `bg_artist` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `artistprofile`
+--
+
+INSERT INTO `artistprofile` (`id_artist`, `nama_artist`, `pp_artist`, `bg_artist`) VALUES
+(1, 'Bruno Mars', 'bruno_mars.png', 'coldplay.webp'),
+(2, 'Taylor Swift', 'taylor.png', 'taylorpage.jpg');
 
 -- --------------------------------------------------------
 
@@ -45,6 +66,12 @@ INSERT INTO `user_info` (`user_id`, `email`, `password`) VALUES
 --
 
 --
+-- Indexes for table `artistprofile`
+--
+ALTER TABLE `artistprofile`
+  ADD PRIMARY KEY (`id_artist`);
+
+--
 -- Indexes for table `user_info`
 --
 ALTER TABLE `user_info`
@@ -53,6 +80,12 @@ ALTER TABLE `user_info`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `artistprofile`
+--
+ALTER TABLE `artistprofile`
+  MODIFY `id_artist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_info`
