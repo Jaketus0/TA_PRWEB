@@ -1,12 +1,12 @@
 <?php
     include 'conf/connection.php';
-    // session_start();
-    // if(!isset($_SESSION['email'])) {
-    //     echo "<script>
-    //         alert('You must login first!!');
-    //         window.location.href='index.php';
-    //         </script>";
-    // }
+    session_start();
+    if(!isset($_SESSION['email'])) {
+        echo "<script>
+            alert('You must login first!!');
+            window.location.href='index.php';
+            </script>";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
