@@ -31,20 +31,9 @@
             </div>
         </div>
     </div>
-    <div id="artist">
-        <ul class="artist-profile">
-            <?php
-                $sql = "SELECT * FROM artistprofile";
-                $result = mysqli_query($conn, $sql);
-                $count = mysqli_num_rows($result);
-                if($count > 0) {
-                    while($row = mysqli_fetch_assoc($result)) {
-                        echo "<li><a href='#".$row['nama_artist']."'><img src='asset/tmp/profile/".$row['pp_artist']."' alt='".$row['nama_artist']."'></a></li>";
-                    }
-                }
-            ?>
-            <!-- <li><a href="#bruno"><img src="asset/img/profile-artist/bruno_mars.png" alt="bruno"></a></li>
-            <li><a href="#daniel"><img src="asset/img/profile-artist/daniel.png" alt="daniel"></a></li> -->
+    <div id="daftar_konser">
+        <ul>
+            <li></li>
         </ul>
     </div>
 </body>

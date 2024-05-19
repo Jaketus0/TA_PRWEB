@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2024 at 04:46 AM
+-- Generation Time: May 19, 2024 at 03:01 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,23 +24,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `artistprofile`
+-- Table structure for table `daftarkonser`
 --
 
-CREATE TABLE `artistprofile` (
-  `id_artist` int(11) NOT NULL,
-  `nama_artist` varchar(255) NOT NULL,
-  `pp_artist` varchar(255) NOT NULL,
-  `bg_artist` varchar(255) NOT NULL
+CREATE TABLE `daftarkonser` (
+  `id_konser` int(11) NOT NULL,
+  `nama_konser` varchar(255) NOT NULL,
+  `tgl_konser` date NOT NULL,
+  `lokasi` varchar(255) NOT NULL,
+  `kota` varchar(255) NOT NULL,
+  `harga` varchar(255) NOT NULL,
+  `gambar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `artistprofile`
+-- Dumping data for table `daftarkonser`
 --
 
-INSERT INTO `artistprofile` (`id_artist`, `nama_artist`, `pp_artist`, `bg_artist`) VALUES
-(1, 'Bruno Mars', 'bruno_mars.png', 'coldplay.webp'),
-(2, 'Taylor Swift', 'taylor.png', 'taylorpage.jpg');
+INSERT INTO `daftarkonser` (`id_konser`, `nama_konser`, `tgl_konser`, `lokasi`, `kota`, `harga`, `gambar`) VALUES
+(1, 'We The Fest 2024', '2024-07-19', 'GBK Sport Complex Senayan', 'Jakarta', '1.500.000 - 17.500.000', 'wethefest.webp'),
+(2, 'Treasure 2024', '2024-06-29', 'GBK Sport Complex Senayan', 'Jakarta', '1.500.000 - 17.500.000', 'treasure.jpg'),
+(3, 'The Sounds Project 7 : Discover Miracle', '2024-08-09', 'GBK Sport Complex Senayan', 'Jakarta', '1.500.000 - 17.500.000', 'tsp7.jpg'),
+(4, 'BNI Java Jazz Fest 2024', '2024-05-24', 'GBK Sport Complex Senayan', 'Jakarta', '650.000 - 2.500.000', 'javajazz.webp'),
+(5, 'Lalala Fest 2024', '2024-08-23', 'GBK Sport Complex Senayan', 'Jakarta', '700.000 - 15.000.000', 'lalala.jpg');
 
 -- --------------------------------------------------------
 
@@ -66,10 +72,10 @@ INSERT INTO `user_info` (`user_id`, `email`, `password`) VALUES
 --
 
 --
--- Indexes for table `artistprofile`
+-- Indexes for table `daftarkonser`
 --
-ALTER TABLE `artistprofile`
-  ADD PRIMARY KEY (`id_artist`);
+ALTER TABLE `daftarkonser`
+  ADD PRIMARY KEY (`id_konser`);
 
 --
 -- Indexes for table `user_info`
@@ -82,10 +88,10 @@ ALTER TABLE `user_info`
 --
 
 --
--- AUTO_INCREMENT for table `artistprofile`
+-- AUTO_INCREMENT for table `daftarkonser`
 --
-ALTER TABLE `artistprofile`
-  MODIFY `id_artist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `daftarkonser`
+  MODIFY `id_konser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user_info`
