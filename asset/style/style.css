@@ -6,18 +6,84 @@
 }
 
 #navbar {
-    /* overflow: hidden; */
+    overflow: hidden;
     font-family: Arial;
     position: fixed;
     top: 0;
     background-color: #fff;
-    /* backdrop-filter: blur(10px); */
+    backdrop-filter: blur(10px);
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
     width: 100%;
     z-index: 1;
-}   
+    height: 60px; 
+    padding-bottom: 1vh;
+}
 
-.container {
+
+.logo {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+.logo img {
+    width: 3vw;
+    height: 3vh;
+    float: left;
+}
+
+.logo li {
+    margin-right: 1rem;
+    text-decoration: none;
+    padding: 0px 10px 0px 5px; 
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 500;
+    float: left; 
+}
+
+.logo li a {
+    text-decoration: none;
+    color: rgb(151, 151, 151);
+    padding-left: 40px; 
+    display: inline-block;
+}
+
+.logo ul {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logo ul li {
+    margin-left: 0.5rem;
+}
+
+.logo ul li:last-child {
+    margin-right: 30px; 
+    padding-right: 40px;
+}
+
+.logo li {
+    float: none; 
+}
+
+/* dellas */
+/* #navbar {
+    overflow: hidden;
+    font-family: Arial;
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    z-index: 1;
+}    */
+
+/* .container {
     margin-left: 2rem;
     margin-top: 2rem;
     align-items: center;
@@ -44,7 +110,7 @@
     display: inline-block;
     font-size: 20px;
     font-weight: 500;
-}
+} */
 
 #daftar_konser {
     margin-top: 20vh;

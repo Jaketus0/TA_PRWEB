@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="asset/style/style.css">
 </head>
 <body>
-    <div id="navbar">
+    <!-- <div id="navbar">
         <div class="container">
             <div class="logo">
                 <ul>
@@ -30,6 +30,18 @@
                 </ul>
             </div>
         </div>
+    </div> -->
+    <div id="navbar">
+        <div class="logo">
+            <img src="asset/img/AVH.png" alt="Logo">
+            <ul>
+                <li><a href="home.php">Home</a></li>    
+                <li><a href="ticket.php">Ticket</a></li>
+                <li><a href="contact.php">Contact</a></li>
+                <li><input type="text" id="search"></li>
+                <li><a href="conf/logout.php" class="logout">Logout</a></li>
+            </ul>
+        </div>
     </div>
     <div id="daftar_konser">
         <ul>
@@ -39,15 +51,15 @@
             $count = mysqli_num_rows($result);
 
             if ($count > 0) {
-              while ($row = mysqli_fetch_assoc($result)) {
+                while ($row = mysqli_fetch_assoc($result)) {
                 $concert_id = $row['id_konser'];
                 // Convert date to desired format
                 $date = strtotime($row['tgl_konser']);
                 $formatted_date = date('d F Y', $date); // dd F yyyy format
 
                 echo "<li data-concert-id='$concert_id'>
-                  <img src='asset/tmp/cover/" . $row['gambar'] . "' alt='" . $row['nama_konser'] . "'>
-                  <div class='details'>
+                    <img src='asset/tmp/cover/" . $row['gambar'] . "' alt='" . $row['nama_konser'] . "'>
+                    <div class='details'>
                     <h3>" . $row['nama_konser'] . "</h3>
                     <table>
                         <tr>
@@ -71,9 +83,9 @@
                             <td>Rp." . $row['harga'] . "</td>
                         </tr>
                     </table>
-                  </div>
+                    </div>
                 </li>";
-              }
+            }
             }
 
             ?>
