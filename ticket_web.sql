@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2024 at 03:01 PM
+-- Generation Time: May 20, 2024 at 01:41 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -44,7 +44,7 @@ CREATE TABLE `daftarkonser` (
 INSERT INTO `daftarkonser` (`id_konser`, `nama_konser`, `tgl_konser`, `lokasi`, `kota`, `harga`, `gambar`) VALUES
 (1, 'We The Fest 2024', '2024-07-19', 'GBK Sport Complex Senayan', 'Jakarta', '1.500.000 - 17.500.000', 'wethefest.webp'),
 (2, 'Treasure 2024', '2024-06-29', 'GBK Sport Complex Senayan', 'Jakarta', '1.500.000 - 17.500.000', 'treasure.jpg'),
-(3, 'The Sounds Project 7 : Discover Miracle', '2024-08-09', 'GBK Sport Complex Senayan', 'Jakarta', '1.500.000 - 17.500.000', 'tsp7.jpg'),
+(3, 'The Sounds Project 7', '2024-08-09', 'GBK Sport Complex Senayan', 'Jakarta', '1.500.000 - 17.500.000', 'tsp7.jpg'),
 (4, 'BNI Java Jazz Fest 2024', '2024-05-24', 'GBK Sport Complex Senayan', 'Jakarta', '650.000 - 2.500.000', 'javajazz.webp'),
 (5, 'Lalala Fest 2024', '2024-08-23', 'GBK Sport Complex Senayan', 'Jakarta', '700.000 - 15.000.000', 'lalala.jpg');
 

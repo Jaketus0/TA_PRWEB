@@ -89,15 +89,20 @@
 
 /* buat konser_detail.php */
 .konser-detail {
+    left: 20px;
     margin-top: 20vh;
+    border: #000 1px solid;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
 .konser-detail img {
     width: 300px;
     height: 300px;
-    margin-bottom: 20px;
+    margin: 20px;
     object-fit: contain;
-    float: left;
-    
+    border-radius: 20px;
 }

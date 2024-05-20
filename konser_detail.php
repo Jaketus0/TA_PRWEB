@@ -50,30 +50,34 @@
         </div>
     </div>
     <div class="konser-detail">
-        <img src="asset/tmp/cover/<?php echo $gambar; ?>" alt="<?php echo $nama_konser; ?>">
-        <h2><?php echo $nama_konser; ?></h2>
-        <table>
-            <tr>
-                <td>Tanggal</td>
-                <td>:</td>
-                <td><?php echo date('d F Y', strtotime($tgl_konser)); ?></td>
-            </tr>
-            <tr>
-                <td>Lokasi</td>
-                <td>:</td>
-                <td><?php echo $lokasi; ?></td>
-            </tr>
-            <tr>
-                <td>Kota</td>
-                <td>:</td>
-                <td><?php echo $kota; ?></td>
-            </tr>
-            <tr>
-                <td>Harga</td>
-                <td>:</td>
-                <td>Rp <?php echo $harga; ?></td>
-            </tr>
-        </table>
+        <div class="gambar">
+            <img src="asset/tmp/cover/<?php echo $gambar; ?>" alt="<?php echo $nama_konser; ?>">
+        </div>
+        <div class="details">
+            <h2><?php echo $nama_konser; ?></h2>
+            <table>
+                <tr>
+                    <td>Tanggal</td>
+                    <td>:</td>
+                    <td><?php echo date('d F Y', strtotime($tgl_konser)); ?></td>
+                </tr>
+                <tr>
+                    <td>Lokasi</td>
+                    <td>:</td>
+                    <td><?php echo $lokasi; ?></td>
+                </tr>
+                <tr>
+                    <td>Kota</td>
+                    <td>:</td>
+                    <td><?php echo $kota; ?></td>
+                </tr>
+                <tr>
+                    <td>Harga</td>
+                    <td>:</td>
+                    <td>Rp <?php echo $harga; ?></td>
+                </tr>
+            </table>
+        </div>
     </div>
 </body>
 </html>

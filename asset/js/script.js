@@ -1,7 +1,7 @@
 function handleConcertClick(event) {
   const clickedListItem = event.currentTarget;
   const concertId = clickedListItem.dataset.concertId;
-  const url = `konser_detail.php?id=${concertId}`; // Example URL structure
+  const url = `konser_detail.php?id=${concertId}`;
   window.location.href = url;
 }
 
