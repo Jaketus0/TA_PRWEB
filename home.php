@@ -1,12 +1,12 @@
 <?php
     include 'conf/connection.php';
-    session_start();
-    if(!isset($_SESSION['email'])) {
-        echo "<script>
-            alert('You must login first!!');
-            window.location.href='index.php';
-            </script>";
-    }
+    // session_start();
+    // if(!isset($_SESSION['email'])) {
+    //     echo "<script>
+    //         alert('You must login first!!');
+    //         window.location.href='index.php';
+    //         </script>";
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +33,50 @@
     </div>
     <div id="daftar_konser">
         <ul>
-            <li></li>
+            <?php
+            $query = "SELECT * FROM daftarkonser";
+            $result = mysqli_query($conn, $query);
+            $count = mysqli_num_rows($result);
+
+            if ($count > 0) {
+              while ($row = mysqli_fetch_assoc($result)) {
+                $concert_id = $row['id_konser'];
+                // Convert date to desired format
+                $date = strtotime($row['tgl_konser']);
+                $formatted_date = date('d F Y', $date); // dd F yyyy format
+
+                echo "<li data-concert-id='$concert_id'>
+                  <img src='asset/tmp/cover/" . $row['gambar'] . "' alt='" . $row['nama_konser'] . "'>
+                  <div class='details'>
+                    <h3>" . $row['nama_konser'] . "</h3>
+                    <table>
+                        <tr>
+                            <td>Tanggal</td>
+                            <td>&nbsp;:&nbsp;</td>
+                            <td>" . $formatted_date . "</td> 
+                        </tr>
+                        <tr>
+                            <td>Lokasi</td>
+                            <td>&nbsp;:&nbsp;</td>
+                            <td>" . $row['lokasi'] . "</td>
+                        </tr>
+                        <tr>
+                            <td>Kota</td>
+                            <td>&nbsp;:&nbsp;</td>
+                            <td>" . $row['kota'] . "</td>
+                        </tr>
+                        <tr>
+                            <td>Harga</td>
+                            <td>&nbsp;:&nbsp;</td>
+                            <td>Rp." . $row['harga'] . "</td>
+                        </tr>
+                    </table>
+                  </div>
+                </li>";
+              }
+            }
+
+            ?>
         </ul>
     </div>
 </body>

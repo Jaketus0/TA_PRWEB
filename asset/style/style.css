@@ -10,11 +10,12 @@
     font-family: Arial;
     position: fixed;
     top: 0;
-    backdrop-filter: blur(10px);
+    background-color: #fff;
+    /* backdrop-filter: blur(10px); */
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
     width: 100%;
     z-index: 1;
-}
+}   
 
 .container {
     margin-left: 2rem;
@@ -47,11 +48,56 @@
 
 #daftar_konser {
     margin-top: 20vh;
+    font-family: Arial;
 }
 
+#daftar_konser ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
 
-/* buat input design */
+#daftar_konser li {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: 0.3s;
+}
+
+#daftar_konser img {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+    object-fit: contain;
+    float: left;
+}
+
+#daftar_konser li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* buat inputdata.php design */
 #inputdata {
     margin-top: 20vh;
 }
 
+/* buat konser_detail.php */
+.konser-detail {
+    margin-top: 20vh;
+}
+
+
+.konser-detail img {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+    object-fit: contain;
+    float: left;
+    
+}
