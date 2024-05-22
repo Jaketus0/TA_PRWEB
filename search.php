@@ -1,18 +1,53 @@
 <?php
   include 'conf/connection.php';
 
-  // Search functionality
+  
   if (isset($_POST['search'])) {
-    $search_term = mysqli_real_escape_string($conn, $_POST['search']);
-    $search_query = "SELECT * FROM daftarkonser WHERE nama_konser LIKE '%$search_term%' OR tgl_konser LIKE '%$search_term%' OR kota LIKE '%$search_term%'";
-    $search_result = mysqli_query($conn, $search_query);
+    $search_term = mysqli_real_escape_string($conn, trim($_POST['search'])); 
+
+    if (preg_match("/^[a-zA-Z]+$/", $search_term)) { 
+      $search_month = date('m', strtotime($search_term)); 
+      $search_query = "SELECT * FROM daftarkonser 
+      WHERE nama_konser LIKE ? 
+      OR MONTH(tgl_konser) = ? 
+      OR kota LIKE ?";
+      $stmt = mysqli_prepare($conn, $search_query);
+      mysqli_stmt_bind_param($stmt, "sss", $search_term, $search_month, $search_term); // Pass variables directly
+
+    } else {
+      
+      $search_date_parts = explode(" ", $search_term);
+
+      if (count($search_date_parts) === 2) {
+        $search_day = (int) $search_date_parts[0];
+        $search_month = date('m', strtotime($search_date_parts[1])); 
+
+        $search_query = "SELECT * FROM daftarkonser 
+                          WHERE DAY(tgl_konser) = ? 
+                          AND MONTH(tgl_konser) = ?";
+        $stmt = mysqli_prepare($conn, $search_query);
+        mysqli_stmt_bind_param($stmt, "ii", $search_day, $search_month); 
+      } else {
+        
+        echo "<script>
+        alert('Invalid search format. Please enter either concert name, month name (e.g., June), or date as day month (e.g., 26 June).');
+        header('Location: home.php');
+        </script>";
+      }
+    }
+
+    mysqli_stmt_execute($stmt); 
+    $search_result = mysqli_stmt_get_result($stmt); 
   } else {
-    // Default query to fetch all concerts if no search is performed
+    
     $query = "SELECT * FROM daftarkonser";
     $result = mysqli_query($conn, $query);
   }
 
+  mysqli_close($conn); 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +78,7 @@
     <h1>Daftar Konser</h1>
     <ul>
       <?php
-        // Display search results or all concerts based on search presence
+        
         if (isset($_POST['search'])) {
           $count = mysqli_num_rows($search_result);
           if ($count > 0) {
@@ -85,11 +120,11 @@
             echo "<li>No concerts found for your search term.</li>";
           }
         } else {
-          // Default output for all concerts if no search is performed
+          
           $count = mysqli_num_rows($result);
           if ($count > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-              // ... (same concert details display as before) ...
+              
             }
           } else {
             echo "<li>No concerts found.</li>";
@@ -99,6 +134,6 @@
     </ul>
   </div>
 </body>
-<script src="https://kit.fontawesome.com/ef9e5793a4.js" crossorigin="anonymous"></script>
+<script src="https:
 <script src="asset/js/script.js"></script>
 </html>
