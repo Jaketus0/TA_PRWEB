@@ -22,7 +22,7 @@
             <img src="asset/img/AVH.png" alt="Logo">
             <ul>
                 <li>
-                    <form action="conf/search.php" method="post">
+                    <form action="search.php" method="post">
                         <input type="text" name="search" id="search" placeholder="Search">
                         <button type="submit" id="searchb"><i class="fas fa-magnifying-glass"></i></button>
                     </form>
