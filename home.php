@@ -17,33 +17,25 @@
     <link rel="stylesheet" href="asset/style/style.css">
 </head>
 <body>
-    <!-- <div id="navbar">
-        <div class="container">
-            <div class="logo">
-                <ul>
-                    <li><img src="asset/img/AVH.png" alt="Logo"></li>
-                    <li><a href="home.php">Home</a></li>    
-                    <li><a href="ticket.php">Ticket</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li><a href="conf/logout.php">Logout</a></li>
-                    <li><input type="text" id="search"></li>
-                </ul>
-            </div>
-        </div>
-    </div> -->
     <div id="navbar">
         <div class="logo">
             <img src="asset/img/AVH.png" alt="Logo">
             <ul>
+                <li>
+                    <form action="" method="post">
+                        <input type="text" name="search" id="search" placeholder="Search">
+                        <button type="submit" id="searchb"><i class="fas fa-magnifying-glass"></i></button>
+                    </form>
+                </li>
                 <li><a href="home.php">Home</a></li>    
                 <li><a href="ticket.php">Ticket</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <li><input type="text" id="search"></li>
                 <li><a href="conf/logout.php" class="logout">Logout</a></li>
             </ul>
         </div>
     </div>
     <div id="daftar_konser">
+        <h1>Daftar Konser</h1>
         <ul>
             <?php
             $query = "SELECT * FROM daftarkonser";
@@ -92,5 +84,6 @@
         </ul>
     </div>
 </body>
+<script src="https://kit.fontawesome.com/ef9e5793a4.js" crossorigin="anonymous"></script>
 <script src="asset/js/script.js"></script>
 </html>
