@@ -31,8 +31,9 @@
         
         echo "<script>
         alert('Invalid search format. Please enter either concert name, month name (e.g., June), or date as day month (e.g., 26 June).');
-        header('Location: home.php');
         </script>";
+        header("Location: home.php");
+        exit();
       }
     }
 
