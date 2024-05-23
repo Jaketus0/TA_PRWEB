@@ -9,3 +9,4 @@ const concertListItems = document.querySelectorAll('li[data-concert-id]');
 concertListItems.forEach(listItem => {
   listItem.addEventListener('click', handleConcertClick);
 });
+

@@ -60,7 +60,7 @@
 <body>
   <div id="navbar">
     <div class="logo">
-      <img src="asset/img/AVH.png" alt="Logo">
+      <img src="asset/img/AVH.png" alt="Logo" onclick="window.location.href='home.php'">
       <ul>
         <li>
           <form action="search.php" method="post">
@@ -68,7 +68,7 @@
             <button type="submit" id="searchb"><i class="fas fa-magnifying-glass"></i></button>
           </form>
         </li>
-        <li><a href="home.php">Home</a></li>   
+        <li><a href="home.php">Home</a></li>
         <li><a href="ticket.php">Ticket</a></li>
         <li><a href="contact.php">Contact</a></li>
         <li><a href="conf/logout.php" class="logout">Logout</a></li>

@@ -37,7 +37,7 @@
 <body>
     <div id="navbar">
         <div class="logo">
-            <img src="asset/img/AVH.png" alt="Logo">
+            <img src="asset/img/AVH.png" alt="Logo" onclick="window.location.href='home.php'">
             <ul>
                 <li>
                     <form action="search.php" method="post">
