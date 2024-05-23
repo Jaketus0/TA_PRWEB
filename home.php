@@ -31,7 +31,7 @@
                 <li><a href="ticket.php">Ticket</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <?php
-                    if (isset($_SESSION['admin@gmail.com'])) {
+                    if (isset($_SESSION['email']) && $_SESSION['email'] === 'admin@gmail.com') {
                       echo '<li><a href="inputdata.php">Input</a></li>';
                     }
                 ?>
