@@ -1,12 +1,12 @@
 <?php
     include 'conf/connection.php';
-    // session_start();
-    // if(!isset($_SESSION['email'])) {
-    //     echo "<script>
-    //         alert('You must login first!!');
-    //         window.location.href='index.php';
-    //         </script>";
-    // }
+    session_start();
+    if(!isset($_SESSION['email'])) {
+        echo "<script>
+            alert('You must login first!!');
+            window.location.href='index.php';
+            </script>";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +30,11 @@
                 <li><a href="home.php">Home</a></li>    
                 <li><a href="ticket.php">Ticket</a></li>
                 <li><a href="contact.php">Contact</a></li>
+                <?php
+                    if (isset($_SESSION['email']) && $_SESSION['email'] === 'admin@gmail.com') {
+                      echo '<li><a href="inputdata.php">Input</a></li>';
+                    }
+                ?>
                 <li><a href="conf/logout.php" class="logout">Logout</a></li>
             </ul>
         </div>
