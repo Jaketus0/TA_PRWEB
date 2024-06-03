@@ -39,7 +39,7 @@
         <div class="logo">
             <img src="asset/img/AVH.png" alt="Logo" onclick="window.location.href='home.php'">
             <ul>
-                <li>
+                <li id='pencarian'>
                     <form action="search.php" method="post">
                         <input type="text" name="search" id="search" placeholder="Search">
                         <button type="submit" id="searchb"><i class="fas fa-magnifying-glass"></i></button>

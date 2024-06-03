@@ -1,3 +1,4 @@
+// for click event on concert list items
 function handleConcertClick(event) {
   const clickedListItem = event.currentTarget;
   const concertId = clickedListItem.dataset.concertId;
@@ -5,6 +6,7 @@ function handleConcertClick(event) {
   window.location.href = url;
 }
 
+// for click event on concert list items
 const concertListItems = document.querySelectorAll('li[data-concert-id]');
 concertListItems.forEach(listItem => {
   listItem.addEventListener('click', handleConcertClick);

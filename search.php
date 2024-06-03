@@ -90,6 +90,7 @@ mysqli_close($conn);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AVH Tickets</title>
   <link rel="stylesheet" href="asset/style/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
 </head>
 <body>
 <div id="navbar">
@@ -106,7 +107,7 @@ mysqli_close($conn);
           }
       ?> 
       <!-- <li><a href="#">About</a></li> -->
-      <li>
+      <li id='pencarian'>
           <form action="search.php" method="post">
             <input type="text" name="search" id="search" placeholder="Search">
             <button type="submit" id="searchb"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
@@ -180,6 +181,6 @@ mysqli_close($conn);
     </ul>
   </div>
 </body>
-<script src="https:
+<script src="https://kit.fontawesome.com/ef9e5793a4.js" crossorigin="anonymous"></script>
 <script src="asset/js/script.js"></script>
 </html>
