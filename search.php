@@ -1,14 +1,14 @@
 <?php
 include 'conf/connection.php';
-session_start();
+// session_start();
 
-if (!isset($_SESSION['email'])) {
-    echo "<script>
-            alert('You must login first!');
-            window.location.href='index.php';
-          </script>";
-    exit(); 
-}
+// if (!isset($_SESSION['email'])) {
+//     echo "<script>
+//             alert('You must login first!');
+//             window.location.href='index.php';
+//           </script>";
+//     exit(); 
+// }
 
 if (isset($_POST['search'])) {
     $search_term = mysqli_real_escape_string($conn, trim($_POST['search']));
@@ -95,7 +95,7 @@ mysqli_close($conn);
 <body>
 <div id="navbar">
   <nav>
-    <div class="logo"><img src="asset/img/AVH gray.png" alt="Logo" onclick="window.location.href='home.php'"></div>
+    <div class="logo"><img src="asset/img/AVH_white.png" alt="Logo" onclick="window.location.href='home.php'"></div>
     <div class="openMenu"><i class="fa fa-bars"></i></div>
     <ul class="mainMenu">
       <li><a href="home.php">Home</a></li>
@@ -113,7 +113,7 @@ mysqli_close($conn);
             <button type="submit" id="searchb"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
           </form>
       </li>
-      <li class="nav-item"><a href="conf/logout.php" class="nav-link">Logout</a></li>
+      <li><a href="conf/logout.php" class="nav-link">Logout</a></li>
       <div class="closeMenu"><i class="fa fa-times"></i></div>
       <span class="icons">
           <i class="fab fa-github"></i>

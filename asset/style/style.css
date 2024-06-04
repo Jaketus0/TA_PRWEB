@@ -11,10 +11,10 @@
     font-family: Arial;
     position: fixed;
     top: 0;
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 30px rgba(255, 255, 255, 0.15);
     width: 100%;
     z-index: 1;
-    padding-bottom: 1vh;
+    padding-bottom: 18vh;
 }
 
 nav {
@@ -30,7 +30,7 @@ nav .mainMenu {
 }
 nav .mainMenu li a {
     display: inline-block;
-    padding: 15px;
+    padding: 20px;
     text-decoration: none;
     text-transform: uppercase;
     color: rgb(255, 255, 255);
@@ -89,6 +89,11 @@ nav .logo {
         background: none;
         color: rgb(118, 118, 118);
     }
+
+    nav .mainMenu li#pencarian {
+        display: none;
+    }
+
     .icons i {
         display: inline-block;
         padding: 12px;
@@ -108,6 +113,64 @@ nav .logo {
     padding: 1rem 1.5rem;
     align-items: center;
 }
+
+/* dropdown button */
+.dropbtn { 
+    background-color: #ffffff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 100%;
+    padding: 20px 25px 20px 25px;
+    margin-right: 15px;
+    margin-left: 20px;
+    transition: 0.3s;
+}
+
+.dropbtn i{
+    color: black;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color:rgb(118, 118, 118);
+}
+
+.dropbtn:hover i, .dropbtn:focus i {
+    color: white;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-top: 3vh;
+    
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: medium;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+    transition: 0.3s;
+}
+
+.show {display:block;}
+
 
 #daftar_konser {
     margin-top: 20vh;
