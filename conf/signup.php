@@ -6,7 +6,7 @@
         $query = "INSERT INTO user_info(email, password) VALUES('$email','$pass');";
         $result = mysqli_query($conn, $query);
         if($result) {
-            header("Location: ../index.php");
+            header("Location: ../masuk.php");
         } else {
             echo "Failed to Sign Up!";
         }
