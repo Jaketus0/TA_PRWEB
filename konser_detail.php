@@ -2,12 +2,6 @@
     include 'conf/connection.php';
     session_start();
     $isLoggedIn = isset($_SESSION['email']) && $_SESSION['email'] !== null;
-//   if(!isset($_SESSION['email'])) {
-//       echo "<script>
-//           alert('You must login first!!');
-//           window.location.href='index.php';
-//           </script>";
-//   }
   $concertId = $_GET['id'];  
   $query = "SELECT * FROM daftarkonser WHERE id_konser = $concertId";
   $result = mysqli_query($conn, $query);
