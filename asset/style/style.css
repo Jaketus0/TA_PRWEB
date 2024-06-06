@@ -11,7 +11,6 @@
     font-family: Arial;
     position: fixed;
     top: 0;
-    box-shadow: 0 20px 30px rgba(255, 255, 255, 0.15);
     width: 100%;
     z-index: 1;
     padding-bottom: 18vh;
@@ -151,8 +150,8 @@ nav .logo {
     position: absolute;
     background-color: #f1f1f1;
     min-width: 20px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     margin-top: 3vh;
+    border-radius: 10px;
     
 }
 
