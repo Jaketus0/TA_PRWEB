@@ -8,10 +8,14 @@
 //           window.location.href='index.php';
 //           </script>";
 //   }
+    $query = "SELECT user_nama FROM user WHERE user_email = '".$_SESSION['user_email']."'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    $user_nama = $row['user_nama'];
+    $_GET['user_nama'] = $user_nama;
     $concertId = $_GET['id'];  
     $query = "SELECT * FROM data_konser WHERE datakonser_id = $concertId";
     $result = mysqli_query($conn, $query);
-
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     
@@ -23,6 +27,14 @@ if (mysqli_num_rows($result) > 0) {
     $harga_min = $row['harga_min'];
     $gambar = $row['gambar'];
     $deskripsi = $row['deskripsi'];
+    $stage_query = "SELECT * FROM stage WHERE datakonser_id = $concertId";
+    $stage_result = mysqli_query($conn, $stage_query);
+    if (mysqli_num_rows($stage_result) > 0) {
+        $stage_row = mysqli_fetch_assoc($stage_result);
+        $stage_maps = $stage_row['maps'];
+    } else {
+        $stage_maps = "No stage data found.";
+    }
 } else {
     echo "Concert not found.";
 }
@@ -66,7 +78,7 @@ if (mysqli_num_rows($result) > 0) {
                     <button onclick="myFunction()" class="dropbtn"><i class="fa-solid fa-user"></i></button>
                     <div id="myDropdown" class="dropdown-content">
                         <?php if ($isLoggedIn): ?>
-                            <li><a href="#" class="nav-link">Akun</a></li>
+                            <li><a href="#" class="nav-link"><?php echo $_GET['user_nama'];?></a></li>
                             <li><a href="#" class="nav-link">Riwayat</a></li>
                             <li><a href="conf/logout.php" class="nav-link">Logout</a></li>
                         <?php else: ?>
@@ -110,9 +122,47 @@ if (mysqli_num_rows($result) > 0) {
                     <td>:</td>
                     <td><?php echo $deskripsi;?></td>
                 </tr>
-
             </table>
         </div>
+    </div>
+    <div class="btnnambah">
+        <?php
+        $location_artis = "window.location.href='tambahArtis.php?id=$concertId'";
+        if (isset($_SESSION['user_email']) && $_SESSION['user_email'] === 'admin@gmail.com') {
+            echo '<div class="addartis">
+            <button class="button" type="button" onclick="'.$location_artis.'">
+                <span class="button_text">Artis</span>
+                <span class="button_icon"><svg class="svg" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
+            </button>
+            </div>';
+        }
+        ?> 
+    </div>
+    <div class="btnnambahjenistiket">
+        <?php
+        $location_artis = "window.location.href='tambahJenisTiket.php?id=$concertId'";
+        if (isset($_SESSION['user_email']) && $_SESSION['user_email'] === 'admin@gmail.com') {
+            echo '<div class="addjenistiket">
+            <button class="button" type="button" onclick="'.$location_artis.'">
+                <span class="button_text">Jenis Tiket</span>
+                <span class="button_icon"><svg class="svg" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
+            </button>
+            </div>';
+        }
+        ?> 
+    </div>
+    <div class="btnnambahstage">
+        <?php
+        $location_artis = "window.location.href='tambahStage.php?id=$concertId'";
+        if (isset($_SESSION['user_email']) && $_SESSION['user_email'] === 'admin@gmail.com') {
+            echo '<div class="addstage">
+            <button class="button" type="button" onclick="'.$location_artis.'">
+                <span class="button_text">stage</span>
+                <span class="button_icon"><svg class="svg" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
+            </button>
+            </div>';
+        }
+        ?> 
     </div>
     <div class="belibtn">
         <?php
@@ -123,6 +173,14 @@ if (mysqli_num_rows($result) > 0) {
             echo "<a href='masuk.php'><b>Login untuk membeli tiket</b></a>";
         }
         ?>
+    </div>
+    <div class="maps">
+        <div class="ini_icon">
+            <i class="fa-solid fa-map"></i>
+        </div>
+        <div class="ini_map">
+            <?php echo $stage_maps; ?>
+        </div>
     </div>
 </body>
 <script src="https://kit.fontawesome.com/ef9e5793a4.js" crossorigin="anonymous"></script>
