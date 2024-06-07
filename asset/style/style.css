@@ -287,27 +287,6 @@ nav .logo {
     outline: none;
 }
 
-.form_input button {
-    background: rgb(49, 155, 255);
-    color: white;
-    padding: 5px 5px 5px 5px;
-    border: none;
-    border-radius: 5px;
-
-}
-
-/* buat konser_detail.php */
-/* .konser-detail {
-    margin-top: 20vh;
-    margin-right: 55vw;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial;
-    background-color: #ddd;
-} */
-
 .details td{
     padding-top: 2%;
     padding-bottom: 2%;
@@ -363,3 +342,47 @@ nav .logo {
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.button {
+    --font-color: #323232;
+    --bg-color: #fff;
+    --main-color: #323232;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--font-color);
+    cursor: pointer;
+  }
+  
+  .button:active {
+    box-shadow: 0px 0px var(--main-color);
+    transform: translate(3px, 3px);
+  }
+  
+
+/* buat pemesanan.php design */
+.button_pesan {
+    --font-color: #323232;
+    --bg-color: #fff;
+    --main-color: #323232;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--font-color);
+    cursor: pointer;
+  }
+  
+  .button_pesan:active {
+    box-shadow: 0px 0px var(--main-color);
+    transform: translate(3px, 3px);
+  }
