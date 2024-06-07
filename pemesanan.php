@@ -51,6 +51,52 @@
             </ul>
         </nav>
     </div>
+    <div id="inputdata">
+        <div class="form_input">
+            <form action="conf/insert.php" method="post" enctype="multipart/form-data">
+                <table>
+                    <tr>
+                        <td><label for="nama_konser">Nama Konser</label></td>
+                        <td>: <input type="text" name="nama_konser" id="nama_konser" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="tgl">Tanggal</label></td>
+                        <td>: <input type="date" name="tgl" id="tgl" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="kota">Kota</label></td>
+                        <td>: <input type="text" name="kota" id="kota" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="lokasi">Lokasi</label></td>
+                        <td>: <input type="text" name="lokasi" id="lokasi" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="maps">Maps</label></td>
+                        <td>: <input type="text" name="maps" id="maps" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="harga">Harga min</label></td>
+                        <td>: <input type="text" name="harga_min" id="harga_min" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="harga">Harga max</label></td>
+                        <td>: <input type="text" name="harga_max" id="harga_max" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="deskripsi">Deskripsi</label></td>
+                        <td>: <input type="text" name="deskripsi" id="deskripsi" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="gambar">Gambar</label></td>
+                        <td>: <input type="file" name="gambar" id="gambar" required></td>
+                    </tr>
+                    <tr>
+                        <td><button class="button_pesan" type="submit" name="input" value="input">Submit</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
 </body>
 <script src="https://kit.fontawesome.com/ef9e5793a4.js" crossorigin="anonymous"></script>
 <script src="asset/js/script.js"></script>
