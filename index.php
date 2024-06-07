@@ -62,7 +62,7 @@
         <h1>Daftar Konser</h1>
         <ul>
             <?php
-            $query = "SELECT * FROM data_konser";
+            $query = "SELECT * FROM data_konser order by tanggal";
             $result = mysqli_query($conn, $query);
             $count = mysqli_num_rows($result);
 

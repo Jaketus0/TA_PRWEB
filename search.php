@@ -26,7 +26,7 @@ if (isset($_POST['search'])) {
               </script>";
     }
 } else {
-    $query = "SELECT * FROM data_konser";
+    $query = "SELECT * FROM data_konser order by tanggal";
     $result = mysqli_query($conn, $query);
 }
 
@@ -49,7 +49,7 @@ mysqli_close($conn);
 <body>
   <div id="navbar">
     <nav>
-      <div class="logo"><img src="asset/img/AVH_white.png" alt="Logo" onclick="window.location.href='home.php'"></div>
+      <div class="logo"><img src="asset/img/AVH_white.png" alt="Logo" onclick="window.location.href='index.php'"></div>
       <div class="openMenu"><i class="fa fa-bars"></i></div>
       <ul class="mainMenu">
         <li><a href="index.php">Home</a></li>
