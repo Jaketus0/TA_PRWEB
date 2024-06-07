@@ -16,6 +16,11 @@
             <h1>Sign Up Form</h1>
             <form name="form" action="conf/signup.php" method="POST">
                 <div class="input-box">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <i class="fa fa-envelope"></i>
+                </div>
+
+                <div class="input-box">
                     <input type="email" name="email" placeholder="Email" required>
                     <i class="fa fa-envelope"></i>
                 </div>

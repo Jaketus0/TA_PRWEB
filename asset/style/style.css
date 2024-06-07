@@ -9,14 +9,14 @@ body{
 }
 
 #navbar {
-    font-size: 62.5%;
+    /* font-size: 62.5%; */
     overflow: hidden;
     font-family: Arial;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1;
-    padding-bottom: 18vh;
+    padding-bottom: 20vh;
 }
 
 nav {
@@ -39,6 +39,7 @@ nav .mainMenu li a {
     font-size: 18px;
     transition: 0.2s ease;
     font-family: Arial;
+    font-size: 82.5%;
 }
 nav .mainMenu li a:hover {
     color: rgb(118, 118, 118);
@@ -155,15 +156,16 @@ nav .logo {
     min-width: 20px;
     margin-top: 3vh;
     border-radius: 10px;
-    
+    right: 20px;
+
 }
 
 .dropdown-content a.nav-link {
     color: black;
-    padding: 12px 16px;
+    padding: 5px 25px;
     text-decoration: none;
     display: block;
-    font-size: medium;
+    font-size: 82.5%;
 }
 
 .dropdown-content a:hover {
@@ -306,6 +308,16 @@ nav .logo {
     background-color: #ddd;
 } */
 
+.details td{
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.details td:nth-child(3){
+    width: 80%;
+    padding-right: 5%;
+}
+
 .konser-detail{
     margin-top: 20vh;
     margin-right: 40vw;
@@ -328,6 +340,7 @@ nav .logo {
     width: 25vw;
     margin: 20px;
     object-fit: contain;
+    justify-content: center;
     border-radius: 30px;
 }
 

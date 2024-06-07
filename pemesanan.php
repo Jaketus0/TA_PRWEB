@@ -1,13 +1,7 @@
 <?php
     include 'conf/connection.php';
     session_start();
-    $isLoggedIn = isset($_SESSION['email']) && $_SESSION['email'] !== null;
-    // if(!isset($_SESSION['email'])) {
-    //     echo "<script>
-    //         alert('You must login first!!');
-    //         window.location.href='index.php';
-    //         </script>";
-    // }
+    $isLoggedIn = isset($_SESSION['email']) && $_SESSION['email'] !== null
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +32,6 @@
                         <button type="submit" id="searchb"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
                     </form>
                 </li>
-                <!-- <li><a href="conf/logout.php" class="nav-link">Logout</a></li> -->
                 <div class="closeMenu"><i class="fa fa-times"></i></div>
                 <span class="icons">
                     <i class="fab fa-github"></i>

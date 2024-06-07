@@ -1,13 +1,12 @@
 <?php
     include 'conf/connection.php';
     session_start();
-    $isLoggedIn = isset($_SESSION['email']) && $_SESSION['email'] !== null;
-    // if(!isset($_SESSION['email'])) {
-    //     echo "<script>
-    //         alert('You must login first!!');
-    //         window.location.href='index.php';
-    //         </script>";
-    // }
+    $isLoggedIn = isset($_SESSION['user_email']) && $_SESSION['user_email'] !== null;
+    $query = "SELECT user_nama FROM user WHERE user_email = '".$_SESSION['user_email']."'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    $user_nama = $row['user_nama'];
+    $_GET['user_nama'] = $user_nama;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +26,7 @@
                 <li><a href="index.php">Home</a></li>
                 <li><a href="ticket.php">Ticket</a></li>
                 <?php
-                    if (isset($_SESSION['email']) && $_SESSION['email'] === 'admin@gmail.com') {
+                    if (isset($_SESSION['user_email']) && $_SESSION['user_email'] === 'admin@gmail.com') {
                         echo '<li><a href="inputdata.php">Input</a></li>';
                     }
                 ?> 
@@ -47,7 +46,7 @@
                     <button onclick="myFunction()" class="dropbtn"><i class="fa-solid fa-user"></i></button>
                     <div id="myDropdown" class="dropdown-content">
                         <?php if ($isLoggedIn): ?>
-                            <li><a href="#" class="nav-link">Akun</a></li>
+                            <li><a href="#" class="nav-link"><?php echo $_GET['user_nama'];?></a></li>
                             <li><a href="#" class="nav-link">Riwayat</a></li>
                             <li><a href="conf/logout.php" class="nav-link">Logout</a></li>
                         <?php else: ?>
@@ -63,15 +62,15 @@
         <h1>Daftar Konser</h1>
         <ul>
             <?php
-            $query = "SELECT * FROM daftarkonser";
+            $query = "SELECT * FROM data_konser";
             $result = mysqli_query($conn, $query);
             $count = mysqli_num_rows($result);
 
             if ($count > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                $concert_id = $row['id_konser'];
+                $concert_id = $row['datakonser_id'];
                 // Convert date to desired format
-                $date = strtotime($row['tgl_konser']);
+                $date = strtotime($row['tanggal']);
                 $formatted_date = date('d F Y', $date); // dd F yyyy format
 
                 echo "<li data-concert-id='$concert_id'>
@@ -97,7 +96,7 @@
                         <tr>
                             <td>Harga</td>
                             <td>&nbsp;:&nbsp;</td>
-                            <td>Rp." . $row['harga'] . "</td>
+                            <td>Rp." . number_format($row['harga_min'], 0, ',', '.')."- Rp.". number_format($row['harga_max'], 0, ',', '.') . "</td>
                         </tr>
                     </table>
                     </div>

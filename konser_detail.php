@@ -1,29 +1,31 @@
 <?php
     include 'conf/connection.php';
     session_start();
-    $isLoggedIn = isset($_SESSION['email']) && $_SESSION['email'] !== null;
-//   if(!isset($_SESSION['email'])) {
+    $isLoggedIn = isset($_SESSION['user_email']) && $_SESSION['user_email'] !== null;
+//   if(!isset($_SESSION['user_email'])) {
 //       echo "<script>
 //           alert('You must login first!!');
 //           window.location.href='index.php';
 //           </script>";
 //   }
-  $concertId = $_GET['id'];  
-  $query = "SELECT * FROM daftarkonser WHERE id_konser = $concertId";
-  $result = mysqli_query($conn, $query);
+    $concertId = $_GET['id'];  
+    $query = "SELECT * FROM data_konser WHERE datakonser_id = $concertId";
+    $result = mysqli_query($conn, $query);
 
-  if (mysqli_num_rows($result) > 0) {
+if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     
     $nama_konser = $row['nama_konser'];
-    $tgl_konser = $row['tgl_konser'];
+    $tgl_konser = $row['tanggal'];
     $lokasi = $row['lokasi'];
     $kota = $row['kota'];
-    $harga = $row['harga'];
+    $harga_max = $row['harga_max'];
+    $harga_min = $row['harga_min'];
     $gambar = $row['gambar'];
-  } else {
+    $deskripsi = $row['deskripsi'];
+} else {
     echo "Concert not found.";
-  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +46,7 @@
                 <li><a href="index.php">Home</a></li>
                 <li><a href="ticket.php">Ticket</a></li>
                 <?php
-                    if (isset($_SESSION['email']) && $_SESSION['email'] === 'admin@gmail.com') {
+                    if (isset($_SESSION['user_email']) && $_SESSION['user_email'] === 'admin@gmail.com') {
                         echo '<li><a href="inputdata.php">Input</a></li>';
                     }
                 ?> 
@@ -99,9 +101,16 @@
                 </tr>
                 <tr>
                     <td>Harga</td>
-                    <td>:</td>
-                    <td>Rp <?php echo $harga; ?></td>
+                    <td>&nbsp;:&nbsp;</td>
+                    <td>Rp.<?php echo number_format($row['harga_min'], 0, ',', '.'); ?> - Rp.<?php echo number_format($row['harga_max'], 0, ',', '.'); ?>
+                    </td>
                 </tr>
+                <tr>
+                    <td>Deskripsi</td>
+                    <td>:</td>
+                    <td><?php echo $deskripsi;?></td>
+                </tr>
+
             </table>
         </div>
     </div>

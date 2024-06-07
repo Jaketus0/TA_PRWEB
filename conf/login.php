@@ -5,15 +5,15 @@ session_start();
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $pass = $_POST['password'];
-    $query = "SELECT * FROM user_info WHERE email='$email' AND password='$pass'";
+    $query = "SELECT * FROM user WHERE user_email='$email' AND user_password='$pass'";
     $result = mysqli_query($conn, $query);
     $data = mysqli_fetch_assoc($result);
     
     if (mysqli_num_rows($result) > 0) {
-        $_SESSION['email'] = $data['email'];
-        $_SESSION['password'] = $data['password'];
-        setcookie("email", $data['email'], time() + 3600);
-        setcookie("password", $data['password'], time() + 3600);
+        $_SESSION['user_email'] = $data['user_email'];
+        $_SESSION['user_password'] = $data['user_password'];
+        setcookie("user_email", $data['user_email'], time() + 3600);
+        setcookie("user_password", $data['user_password'], time() + 3600);
 
         // Periksa apakah URL sebelumnya disimpan dalam sesi
         if (isset($_SESSION['redirect_url'])) {
