@@ -1,16 +1,12 @@
 <?php
     include 'conf/connection.php';
     session_start();
-<<<<<<< HEAD
     $isLoggedIn = isset($_SESSION['user_email']) && $_SESSION['user_email'] !== null;
     $query = "SELECT user_nama FROM user WHERE user_email = '".$_SESSION['user_email']."'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
     $user_nama = $row['user_nama'];
     $_GET['user_nama'] = $user_nama;
-=======
-    $isLoggedIn = isset($_SESSION['email']) && $_SESSION['email'] !== null;
->>>>>>> 2c44f83297f59d516a743279f9509fdc46a6a975
 ?>
 <!DOCTYPE html>
 <html lang="en">

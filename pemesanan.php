@@ -1,11 +1,7 @@
 <?php
     include 'conf/connection.php';
     session_start();
-<<<<<<< HEAD
     $isLoggedIn = isset($_SESSION['email']) && $_SESSION['email'] !== null
-=======
-    $isLoggedIn = isset($_SESSION['email']) && $_SESSION['email'] !== null;
->>>>>>> 2c44f83297f59d516a743279f9509fdc46a6a975
 ?>
 <!DOCTYPE html>
 <html lang="en">
