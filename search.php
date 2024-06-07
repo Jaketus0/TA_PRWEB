@@ -8,7 +8,8 @@ if (isset($_POST['search'])) {
 
     $search_query = "SELECT * FROM data_konser WHERE 
                     (nama_konser LIKE ? OR kota LIKE ? OR MONTH(tanggal) = ?) 
-                    OR datakonser_id IN (SELECT datakonser_id FROM artis WHERE nama_artis LIKE ?)";
+                    OR datakonser_id IN (SELECT datakonser_id FROM artis WHERE nama_artis LIKE ?)
+                    ORDER BY tanggal ASC";
     
     $stmt = mysqli_prepare($conn, $search_query);
     
@@ -26,7 +27,7 @@ if (isset($_POST['search'])) {
               </script>";
     }
 } else {
-    $query = "SELECT * FROM data_konser order by tanggal";
+    $query = "SELECT * FROM data_konser";
     $result = mysqli_query($conn, $query);
 }
 
