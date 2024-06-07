@@ -50,3 +50,46 @@ window.onclick = function(event) {
     }
   }
 } 
+
+// for realtime update harga total
+document.addEventListener("DOMContentLoaded", function() {
+  const ticketData = JSON.parse(document.getElementById('ticketData').textContent);
+  const selectElement = document.getElementById('jenistiket');
+  const hargaElement = document.getElementById('harga');
+  const jumlahElement = document.getElementById('jumlah');
+  const totalElement = document.getElementById('total');
+  const errorStockElement = document.getElementById('errorStock'); // Add this line
+
+  function formatCurrency(amount) {
+      return new Intl.NumberFormat('id-ID', {
+          style: 'currency',
+          currency: 'IDR'
+      }).format(amount);
+  }
+
+  function updatePrice() {
+      const selectedTicket = selectElement.value;
+      const quantity = jumlahElement.value;
+      let unitPrice = 0;
+      let stock = 0; // Add this line
+      ticketData.forEach(ticket => {
+          if (ticket.jenis === selectedTicket) {
+              unitPrice = ticket.harga;
+              stock = ticket.stock; // Add this line
+          }
+      });
+      const totalPrice = unitPrice * quantity;
+      hargaElement.value = formatCurrency(unitPrice);
+      totalElement.value = formatCurrency(totalPrice);
+      
+      // Check if quantity exceeds stock and update error message
+      if (quantity > stock) {
+          errorStockElement.innerHTML = "Jumlah melebihi stock!";
+      } else {
+          errorStockElement.innerHTML = ""; // Clear error message if within stock limit
+      }
+  }
+
+  selectElement.addEventListener('change', updatePrice);
+  jumlahElement.addEventListener('input', updatePrice);
+});

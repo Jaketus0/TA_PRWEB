@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2024 at 12:11 PM
+-- Generation Time: Jun 07, 2024 at 01:38 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -66,8 +66,8 @@ CREATE TABLE `data_konser` (
 
 INSERT INTO `data_konser` (`datakonser_id`, `nama_konser`, `tanggal`, `lokasi`, `kota`, `harga_max`, `harga_min`, `gambar`, `deskripsi`) VALUES
 (1, 'Buzz World Tour Jakarta', '2025-02-14', 'GBK Sport Complex Senayan', 'Jakarta', 2000000, 500000, 'niki.png', 'Penyanyi-penulis lagu Indonesia, Niki Zefanya, siap menggebrak Jakarta dengan \"Buzz World Tour\" yang akan digelar pada tanggal 14 dan 15 Februari 2025. Meriahkan perilisan album terbarunya yang ditunggu-tunggu, \"Buzz\", Niki siap menghadirkan malam yang penuh energi, musik yang memukau, dan kenangan tak terlupakan untuk para penggemarnya di Indonesia.'),
-(2, 'Treasure Relay Tour Reboot In Jakarta', '2024-06-29', 'GBK Sport Complex Senayan', 'Jakarta', 3600000, 1400000, 'treasure.png', 'Treasure, boy group asal Korea Selatan yang dibentuk oleh YG Entertainment, akan kembali ke Jakarta untuk konser mereka yang bertajuk \"Treasure Relay Tour Reboot\". Konser ini akan menjadi momen spesial bagi para penggemar Treasure di Indonesia, yang dikenal dengan sebutan \"Teume\".\r\n\r\nTreasure akan membawakan lagu-lagu hits mereka dari album \"JIKJIN\" dan \"Hello\", serta beberapa lagu kejutan lainnya. Konser ini dijamin akan penuh dengan energi, musik yang catchy, dan penampilan yang memukau dari para anggota Treasure.'),
-(3, 'DOH KYUNG SOO ASIA FAN CONCERT TOUR <BLOOM>', '2024-07-12', 'The Kasablanka Hall', 'Jakarta', 3000000, 1400000, 'do.png', 'Doh Kyung Soo, atau yang dikenal dengan nama D.O. dari EXO, akan menggelar tur konser solo pertamanya di Asia bertajuk DOH KYUNG SOO ASIA FAN CONCERT TOUR <BLOOM>. Konser ini akan membawa para penggemarnya dalam perjalanan musikal yang penuh dengan pesona dan kehangatan.');
+(2, 'Treasure Relay Tour Reboot', '2024-06-29', 'GBK Sport Complex Senayan', 'Jakarta', 3600000, 1400000, 'treasure.jpg', 'Treasure, boy group asal Korea Selatan yang dibentuk oleh YG Entertainment, akan kembali ke Jakarta untuk konser mereka yang bertajuk \"Treasure Relay Tour Reboot\". Konser ini akan menjadi momen spesial bagi para penggemar Treasure di Indonesia, yang dikenal dengan sebutan \"Teume\".\r\n\r\nTreasure akan membawakan lagu-lagu hits mereka dari album \"JIKJIN\" dan \"Hello\", serta beberapa lagu kejutan lainnya. Konser ini dijamin akan penuh dengan energi, musik yang catchy, dan penampilan yang memukau dari para anggota Treasure.'),
+(3, 'BLOOM Asia Fan Tour Concert ', '2024-07-12', 'The Kasablanka Hall', 'Jakarta', 3000000, 1400000, 'do.jpg', 'Doh Kyung Soo, atau yang dikenal dengan nama D.O. dari EXO, akan menggelar tur konser solo pertamanya di Asia bertajuk DOH KYUNG SOO ASIA FAN CONCERT TOUR <BLOOM>. Konser ini akan membawa para penggemarnya dalam perjalanan musikal yang penuh dengan pesona dan kehangatan.');
 
 -- --------------------------------------------------------
 
@@ -84,7 +84,8 @@ CREATE TABLE `invoice` (
   `user_id` int(11) NOT NULL,
   `datakonser_id` int(11) NOT NULL,
   `no_tlp` int(20) NOT NULL,
-  `user_email` varchar(100) NOT NULL
+  `user_email` varchar(100) NOT NULL,
+  `total_harga` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -163,7 +164,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_nama`, `user_password`, `user_email`) VALUES
-(1, 'hera', '1234haha', 'hera@gmail.com');
+(1, 'hera', '1234haha', 'hera@gmail.com'),
+(2, 'admin', 'admin', 'admin@gmail.com'),
+(3, 'Dellas', 'dellas', 'aodellas@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -249,7 +252,7 @@ ALTER TABLE `stage`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
