@@ -1,6 +1,7 @@
 <?php
     include 'conf/connection.php';
     session_start();
+<<<<<<< HEAD
     $isLoggedIn = isset($_SESSION['user_email']) && $_SESSION['user_email'] !== null;
 //   if(!isset($_SESSION['user_email'])) {
 //       echo "<script>
@@ -11,6 +12,12 @@
     $concertId = $_GET['id'];  
     $query = "SELECT * FROM data_konser WHERE datakonser_id = $concertId";
     $result = mysqli_query($conn, $query);
+=======
+    $isLoggedIn = isset($_SESSION['email']) && $_SESSION['email'] !== null;
+  $concertId = $_GET['id'];  
+  $query = "SELECT * FROM daftarkonser WHERE id_konser = $concertId";
+  $result = mysqli_query($conn, $query);
+>>>>>>> 2c44f83297f59d516a743279f9509fdc46a6a975
 
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);

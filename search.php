@@ -1,7 +1,11 @@
 <?php
 include 'conf/connection.php';
 session_start();
+<<<<<<< HEAD
 $isLoggedIn = isset($_SESSION['user_email']) && $_SESSION['user_email'] !== null;
+=======
+$isLoggedIn = isset($_SESSION['email']) && $_SESSION['email'] !== null;
+>>>>>>> 2c44f83297f59d516a743279f9509fdc46a6a975
 
 if (isset($_POST['search'])) {
     $search_term = mysqli_real_escape_string($conn, trim($_POST['search']));
