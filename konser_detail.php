@@ -2,12 +2,6 @@
     include 'conf/connection.php';
     session_start();
     $isLoggedIn = isset($_SESSION['email']) && $_SESSION['email'] !== null;
-//   if(!isset($_SESSION['email'])) {
-//       echo "<script>
-//           alert('You must login first!!');
-//           window.location.href='index.php';
-//           </script>";
-//   }
   $concertId = $_GET['id'];  
   $query = "SELECT * FROM daftarkonser WHERE id_konser = $concertId";
   $result = mysqli_query($conn, $query);
@@ -41,7 +35,7 @@
             <div class="logo"><img src="asset/img/AVH_white.png" alt="Logo" onclick="window.location.href='index.php'"></div>
             <div class="openMenu"><i class="fa fa-bars"></i></div>
             <ul class="mainMenu">
-                <li><a href="home.php">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="ticket.php">Ticket</a></li>
                 <?php
                     if (isset($_SESSION['email']) && $_SESSION['email'] === 'admin@gmail.com') {
