@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2024 at 01:38 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Jun 08, 2024 at 10:04 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,7 +40,8 @@ CREATE TABLE `artis` (
 INSERT INTO `artis` (`artis_id`, `nama_artis`, `datakonser_id`) VALUES
 (2, 'Niki Zefanya', 1),
 (3, 'Treasure', 2),
-(4, 'Doh Kyungsoo', 3);
+(4, 'Doh Kyungsoo', 3),
+(12, 'Jihoon', 2);
 
 -- --------------------------------------------------------
 
@@ -222,7 +223,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `artis`
 --
 ALTER TABLE `artis`
-  MODIFY `artis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `artis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `data_konser`
@@ -240,7 +241,7 @@ ALTER TABLE `invoice`
 -- AUTO_INCREMENT for table `jenis_tiket`
 --
 ALTER TABLE `jenis_tiket`
-  MODIFY `jenis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `jenis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `stage`
