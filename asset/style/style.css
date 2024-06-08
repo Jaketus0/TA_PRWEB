@@ -196,7 +196,7 @@ nav .logo {
 #daftar_konser li {
     margin: 10px;
     padding: 10px;
-    border: 1px solid #000;
+    border: 1px solid #c2c2c2;
     border-radius: 10px;
     background-color: #f0f0f0;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
@@ -275,7 +275,6 @@ nav .logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .form_input input {
@@ -295,6 +294,7 @@ nav .logo {
 .details td{
     padding-top: 2%;
     padding-bottom: 2%;
+    font-size: 15px;
 }
 
 .details td:nth-child(3){
@@ -560,4 +560,33 @@ iframe {
     border-radius: 10px;
     background-color: #f0f0f0;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stage-image{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.stage-image img{
+    border-radius: 20px;
+    height: 30vh;
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+    margin-left: 30vw;
+} 
+
+.form-container{ 
+    margin-right: 15vw;
+    display: flex;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
 }

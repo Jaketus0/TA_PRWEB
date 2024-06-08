@@ -1,6 +1,12 @@
 <?php
 include 'conf/connection.php';
 session_start();
+    if(!isset($_SESSION['user_email'])) {
+        echo "<script>
+        alert('You must login first!!');
+        window.location.href='index.php';
+        </script>";
+    }
 $isLoggedIn = isset($_SESSION['user_email']) && $_SESSION['user_email'] !== null;
 $query = "SELECT user_nama FROM user WHERE user_email = '".$_SESSION['user_email']."'";
 $result = mysqli_query($conn, $query);
@@ -35,10 +41,20 @@ try {
         usort($ticketTypes, function($a, $b) {
             return $a['harga'] - $b['harga'];
         });
+
+        // Fetch the stage image
+        $sql_stage = "SELECT gambar_stage FROM stage WHERE datakonser_id = ?";
+        $stmt_stage = $conn->prepare($sql_stage);
+        $stmt_stage->bind_param("i", $concertId);
+        $stmt_stage->execute();
+        $result_stage = $stmt_stage->get_result();
+        $row_stage = $result_stage->fetch_assoc();
+        $gambar_stage = $row_stage['gambar_stage'];
     }
 
     $stmt_concert->close();
     $stmt_ticket->close();
+    $stmt_stage->close();
 
     // Check if the form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -65,7 +81,6 @@ try {
             $errorMessage = ""; // Clear the error message if booking is successful
         }
     } else {
-
         $errorMessage = "";
     }
 } catch (mysqli_sql_exception $e) {
@@ -80,6 +95,25 @@ try {
     <title>AVH Tickets</title>
     <link rel="stylesheet" href="asset/style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .stage-image {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .form-container {
+            flex: 1;
+        }
+        .stage-image img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>  
     <div id="navbar">
@@ -123,53 +157,62 @@ try {
     <div class="title">
         <h1><?php if (isset($concertName)) echo $concertName; ?></h1>
     </div>
-    <div id="inputdata">
-        <div class="form_input">
-            <form action="conf/log_pesan.php" method="post" enctype="multipart/form-data">
-                <table>
-                <tr>
-                    <td><label for="nama_pemesan">Nama </label></td>
-                    <td>: <input type="text" name="nama_pemesan" id="nama_pemesan" required></td>
-                </tr>
-                <tr>
-                    <td><label for="tlp_pemesan">No Tlp</label></td>
-                    <td>: <input type="number" name="tlp_pemesan" id="tlp_pemesan" required></td>
-                </tr>
-                <tr>
-                    <td><label for="email_pemesan">E-Mail</label></td>
-                    <td>: <input type="email" name="email_pemesan" id="email_pemesan" required></td>
-                </tr>
-                <tr>
-                    <td><label for="jenistiket">Pilih Tiket</label></td>
-                    <td>: 
-                    <select name="jenistiket" id="jenistiket" required>
-                        <option value="" selected disabled>Pilih Jenis Tiket</option>
-                        <?php foreach ($ticketTypes as $type): ?>
-                            <option value="<?php echo $type['jenis']; ?>"><?php echo $type['jenis']; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="jumlah">Jumlah</label></td>
-                    <td>: <input type="number" name="jumlah" id="jumlah" value="1"  required></td>
-                </tr>
-                <tr>
-                    <td id="errorStock"><p></p></td>
-                </tr>
-                <tr>
-                    <td><label for="harga">Harga Satuan</label></td>  
-                    <td>: <input type="text" name="harga" id="harga" disabled></td>
-                </tr>
-                <tr>
-                    <td><label for="total">Total Harga</label></td>  
-                    <td>: <input type="text" name="total" id="total" disabled></td>
-                </tr>
-                <tr>
-                    <td><button class="button_pesan" type="submit" title="Lakukan Pemesanan">Submit</button></td>
-                </tr>
-                </table>
-            </form>
+    <div class="content">
+        <div class="stage-image">
+            <?php if (isset($gambar_stage)): ?>
+                <img src="asset/tmp/stage/<?php echo $gambar_stage; ?>" alt="Gambar Stage">
+            <?php endif; ?>
+        </div>
+        <div class="form-container">
+            <div id="inputdata">
+                <div class="form_input">
+                    <form action="conf/log_pesan.php" method="post" enctype="multipart/form-data">
+                        <table>
+                        <tr>
+                            <td><label for="nama_pemesan">Nama </label></td>
+                            <td>: <input type="text" name="nama_pemesan" id="nama_pemesan" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="tlp_pemesan">No Tlp</label></td>
+                            <td>: <input type="number" name="tlp_pemesan" id="tlp_pemesan" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="email_pemesan">E-Mail</label></td>
+                            <td>: <input type="email" name="email_pemesan" id="email_pemesan" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="jenistiket">Pilih Tiket</label></td>
+                            <td>: 
+                            <select name="jenistiket" id="jenistiket" required>
+                                <option value="" selected disabled>Pilih Jenis Tiket</option>
+                                <?php foreach ($ticketTypes as $type): ?>
+                                    <option value="<?php echo $type['jenis']; ?>"><?php echo $type['jenis']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="jumlah">Jumlah</label></td>
+                            <td>: <input type="number" name="jumlah" id="jumlah" value="1"  required></td>
+                        </tr>
+                        <tr>
+                            <td id="errorStock"><p></p></td>
+                        </tr>
+                        <tr>
+                            <td><label for="harga">Harga Satuan</label></td>  
+                            <td>: <input type="text" name="harga" id="harga" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><label for="total">Total Harga</label></td>  
+                            <td>: <input type="text" name="total" id="total" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><button class="button_pesan" type="submit" title="Lakukan Pemesanan">Submit</button></td>
+                        </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <script id="ticketData" type="application/json"><?php echo json_encode($ticketTypes); ?></script>
