@@ -530,3 +530,34 @@ iframe {
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.adminTools{ 
+    margin-top: 5vh;
+    display: flex;
+    justify-content:space-around;
+}
+
+.artis {
+    margin-top: 5vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.artis h3{
+    text-align: center;
+}
+
+.artis ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.artis li{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}

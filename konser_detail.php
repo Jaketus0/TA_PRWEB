@@ -79,7 +79,7 @@ if (mysqli_num_rows($result) > 0) {
                     <div id="myDropdown" class="dropdown-content">
                         <?php if ($isLoggedIn): ?>
                             <li><a href="#" class="nav-link"><?php echo $_GET['user_nama'];?></a></li>
-                            <li><a href="#" class="nav-link">Riwayat</a></li>
+                            <li><a href="riwayat.php" class="nav-link">Riwayat</a></li>
                             <li><a href="conf/logout.php" class="nav-link">Logout</a></li>
                         <?php else: ?>
                             <li><a href="masuk.php" class="nav-link">Login</a></li>
@@ -125,44 +125,62 @@ if (mysqli_num_rows($result) > 0) {
             </table>
         </div>
     </div>
-    <div class="btnnambah">
-        <?php
-        $location_artis = "window.location.href='tambahArtis.php?id=$concertId'";
-        if (isset($_SESSION['user_email']) && $_SESSION['user_email'] === 'admin@gmail.com') {
-            echo '<div class="addartis">
-            <button class="button" type="button" onclick="'.$location_artis.'">
-                <span class="button_text">Artis</span>
-                <span class="button_icon"><svg class="svg" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
-            </button>
-            </div>';
-        }
-        ?> 
+    <div class="adminTools">
+        <div class="btnnambah"> 
+            <?php
+            $location_artis = "window.location.href='tambahArtis.php?id=$concertId'";
+            if (isset($_SESSION['user_email']) && $_SESSION['user_email'] === 'admin@gmail.com') {
+                echo '<div class="addartis">
+                <button class="button" type="button" onclick="'.$location_artis.'">
+                    <span class="button_text">Artis</span>
+                    <span class="button_icon"><svg class="svg" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
+                </button>
+                </div>';
+            }
+            ?> 
+            </div>
+            <div class="btnnambahjenistiket">   
+            <?php
+            $location_artis = "window.location.href='tambahJenisTiket.php?id=$concertId'";
+            if (isset($_SESSION['user_email']) && $_SESSION['user_email'] === 'admin@gmail.com') {
+                echo '<div class="addjenistiket">
+                <button class="button" type="button" onclick="'.$location_artis.'">
+                    <span class="button_text">Jenis Tiket</span>
+                    <span class="button_icon"><svg class="svg" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
+                </button>
+                </div>';
+            }
+            ?> 
+            </div>
+            <div class="btnnambahstage">    
+            <?php
+            $location_artis = "window.location.href='tambahStage.php?id=$concertId'";
+            if (isset($_SESSION['user_email']) && $_SESSION['user_email'] === 'admin@gmail.com') {
+                echo '<div class="addstage">
+                <button class="button" type="button" onclick="'.$location_artis.'">
+                    <span class="button_text">stage</span>
+                    <span class="button_icon"><svg class="svg" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
+                </button>
+                </div>';
+            }
+            ?> 
+        </div>
     </div>
-    <div class="btnnambahjenistiket">
-        <?php
-        $location_artis = "window.location.href='tambahJenisTiket.php?id=$concertId'";
-        if (isset($_SESSION['user_email']) && $_SESSION['user_email'] === 'admin@gmail.com') {
-            echo '<div class="addjenistiket">
-            <button class="button" type="button" onclick="'.$location_artis.'">
-                <span class="button_text">Jenis Tiket</span>
-                <span class="button_icon"><svg class="svg" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
-            </button>
-            </div>';
-        }
-        ?> 
-    </div>
-    <div class="btnnambahstage">
-        <?php
-        $location_artis = "window.location.href='tambahStage.php?id=$concertId'";
-        if (isset($_SESSION['user_email']) && $_SESSION['user_email'] === 'admin@gmail.com') {
-            echo '<div class="addstage">
-            <button class="button" type="button" onclick="'.$location_artis.'">
-                <span class="button_text">stage</span>
-                <span class="button_icon"><svg class="svg" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
-            </button>
-            </div>';
-        }
-        ?> 
+    <div class="artis">
+        <h3>Artis</h3>
+        <ul>
+            <?php
+            $artis_query = "SELECT * FROM artis WHERE datakonser_id = $concertId";
+            $artis_result = mysqli_query($conn, $artis_query);
+            if (mysqli_num_rows($artis_result) > 0) {
+                while ($artis_row = mysqli_fetch_assoc($artis_result)) {
+                    echo "<li> &nbsp;" . $artis_row['nama_artis'] . "&nbsp; </li>";
+                }
+            } else {
+                echo "No artist data found.";
+            }
+            ?>
+        </ul>
     </div>
     <div class="belibtn">
         <?php

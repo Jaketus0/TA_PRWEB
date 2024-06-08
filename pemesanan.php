@@ -1,7 +1,12 @@
 <?php
 include 'conf/connection.php';
 session_start();
-$isLoggedIn = isset($_SESSION['email']) && $_SESSION['email'] !== null;
+$isLoggedIn = isset($_SESSION['user_email']) && $_SESSION['user_email'] !== null;
+$query = "SELECT user_nama FROM user WHERE user_email = '".$_SESSION['user_email']."'";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+$user_nama = $row['user_nama'];
+$_GET['user_nama'] = $user_nama;
 
 $concertId = isset($_GET['id']) ? $_GET['id'] : null;
 
@@ -104,7 +109,7 @@ try {
                     <button onclick="myFunction()" class="dropbtn"><i class="fa-solid fa-user"></i></button>
                     <div id="myDropdown" class="dropdown-content">
                         <?php if ($isLoggedIn): ?>
-                            <li><a href="#" class="nav-link">Akun</a></li>
+                            <li><a href="#" class="nav-link"><?php echo $_GET['user_nama'];?></a></li>
                             <li><a href="#" class="nav-link">Riwayat</a></li>
                             <li><a href="conf/logout.php" class="nav-link">Logout</a></li>
                         <?php else: ?>
