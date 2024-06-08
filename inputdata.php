@@ -77,10 +77,6 @@
                         <td>: <input type="text" name="lokasi" id="lokasi" required></td>
                     </tr>
                     <tr>
-                        <td><label for="maps">Maps</label></td>
-                        <td>: <input type="text" name="maps" id="maps" required></td>
-                    </tr>
-                    <tr>
                         <td><label for="harga">Harga min</label></td>
                         <td>: <input type="text" name="harga_min" id="harga_min" required></td>
                     </tr>

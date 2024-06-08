@@ -4,13 +4,15 @@
         $nama_konser = $_POST['nama_konser'];
         $lokasi = $_POST['lokasi'];
         $kota = $_POST['kota'];
-        $harga = $_POST['harga'];
+        $harga_min = $_POST['harga_min'];
+        $harga_max = $_POST['harga_max'];
         $tgl = $_POST['tgl'];
         $gambar = $_FILES['gambar']['name'];
         $tmp = $_FILES['gambar']['tmp_name'];
+        $deskripsi = $_POST['deskripsi'];
         $path = "../asset/tmp/cover/".$gambar;
         move_uploaded_file($tmp, $path);
-        $sql = "INSERT INTO daftarkonser (nama_konser, tgl_konser, lokasi, kota, harga, gambar) VALUES ('$nama_konser', '$tgl', '$lokasi', '$kota', '$harga', '$gambar')";
+        $sql = "INSERT INTO data_konser (nama_konser, tanggal, lokasi, kota, harga_max, harga_min, gambar,deskripsi) VALUES ('$nama_konser', '$tgl', '$lokasi', '$kota', '$harga_max', '$harga_min', '$gambar','$deskripsi')";
         $result = mysqli_query($conn, $sql);
         if($result) {
             echo "<script>
