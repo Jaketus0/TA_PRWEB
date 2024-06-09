@@ -3,8 +3,11 @@ include 'conf/connection.php';
 session_start();
 
 // Check if the user is logged in
-if (!isset($_SESSION['user_email'])) {
-    header("Location: masuk.php");
+if (!isset($_SESSION['user_email']) || $_SESSION['user_email'] !== 'admin@gmail.com') {
+    echo "<script>
+    alert('You must login first!');
+    window.location.href='index.php';
+    </script>";
     exit();
 }
 
@@ -29,7 +32,7 @@ if (isset($_POST['submitStage'])) {
         if ($gambarError === 0) {
             if ($gambarSize < 5000000) { // 5MB
                 $gambarNameNew = uniqid('', true) . "." . $gambarActualExt;
-                $gambarDestination = 'uploads/' . $gambarNameNew;
+                $gambarDestination = 'asset/tmp/stage/' . $gambarNameNew;
                 move_uploaded_file($gambarTmpName, $gambarDestination);
 
                 $query = "INSERT INTO stage (datakonser_id, gambar_stage, maps) VALUES ('$datakonser_id', '$gambarDestination', '$maps')";

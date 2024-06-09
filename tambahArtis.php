@@ -2,8 +2,11 @@
 include 'conf/connection.php';
 session_start();
 
-if (!isset($_SESSION['user_email'])) {
-    header("Location: masuk.php");
+if (!isset($_SESSION['user_email']) || $_SESSION['user_email'] !== 'admin@gmail.com') {
+    echo "<script>
+    alert('You must login first!');
+    window.location.href='index.php';
+    </script>";
     exit();
 }
 

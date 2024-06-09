@@ -1,6 +1,13 @@
 <?php
     include 'conf/connection.php';
     session_start();
+    if (!isset($_SESSION['user_email']) || $_SESSION['user_email'] !== 'admin@gmail.com') {
+        echo "<script>
+        alert('You must login first!');
+        window.location.href='index.php';
+        </script>";
+        exit();
+    }
     $isLoggedIn = isset($_SESSION['user_email']) && $_SESSION['user_email'] !== null;
     $query = "SELECT user_nama FROM user WHERE user_email = '".$_SESSION['user_email']."'";
     $result = mysqli_query($conn, $query);
