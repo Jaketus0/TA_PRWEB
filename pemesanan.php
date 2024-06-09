@@ -1,12 +1,12 @@
 <?php
 include 'conf/connection.php';
 session_start();
-    if(!isset($_SESSION['user_email'])) {
-        echo "<script>
-        alert('You must login first!!');
-        window.location.href='index.php';
-        </script>";
-    }
+if (!isset($_SESSION['user_email'])) {
+    echo "<script>
+    alert('You must login first!!');
+    window.location.href='index.php';
+    </script>";
+}
 $isLoggedIn = isset($_SESSION['user_email']) && $_SESSION['user_email'] !== null;
 $query = "SELECT user_nama FROM user WHERE user_email = '".$_SESSION['user_email']."'";
 $result = mysqli_query($conn, $query);
@@ -26,19 +26,19 @@ try {
         $result_concert = $stmt_concert->get_result();
         $row_concert = $result_concert->fetch_assoc();
         $concertName = $row_concert['nama_konser'];
-        
+
         $sql_ticket = "SELECT jenis, harga, stock FROM jenis_tiket WHERE datakonser_id = ?";
         $stmt_ticket = $conn->prepare($sql_ticket);
         $stmt_ticket->bind_param("i", $concertId);
         $stmt_ticket->execute();
         $result_ticket = $stmt_ticket->get_result();
-        $ticketTypes = array(); 
+        $ticketTypes = array();
 
         while ($row_ticket = $result_ticket->fetch_assoc()) {
-            $ticketTypes[] = $row_ticket; 
+            $ticketTypes[] = $row_ticket;
         }
 
-        usort($ticketTypes, function($a, $b) {
+        usort($ticketTypes, function ($a, $b) {
             return $a['harga'] - $b['harga'];
         });
 
@@ -89,6 +89,7 @@ try {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,20 +103,24 @@ try {
             align-items: flex-start;
             padding: 20px;
         }
+
         .stage-image {
             flex: 1;
             margin-right: 20px;
         }
+
         .form-container {
             flex: 1;
         }
+
         .stage-image img {
             max-width: 100%;
             height: auto;
         }
     </style>
 </head>
-<body>  
+
+<body>
     <div id="navbar">
         <nav>
             <div class="logo"><img src="asset/img/AVH_white.png" alt="Logo" onclick="window.location.href='index.php'"></div>
@@ -124,10 +129,10 @@ try {
                 <li><a href="index.php">Home</a></li>
                 <li><a href="ticket.php">Ticket</a></li>
                 <?php
-                    if (isset($_SESSION['email']) && $_SESSION['email'] === 'admin@gmail.com') {
-                        echo '<li><a href="inputdata.php">Input</a></li>';
-                    }
-                ?> 
+                if (isset($_SESSION['email']) && $_SESSION['email'] === 'admin@gmail.com') {
+                    echo '<li><a href="inputdata.php">Input</a></li>';
+                }
+                ?>
                 <li><a href="#">About</a></li>
                 <li id='pencarian'>
                     <form action="search.php" method="post">
@@ -142,11 +147,11 @@ try {
                 <div class="dropdown">
                     <button onclick="myFunction()" class="dropbtn"><i class="fa-solid fa-user"></i></button>
                     <div id="myDropdown" class="dropdown-content">
-                        <?php if ($isLoggedIn): ?>
-                            <li><a href="#" class="nav-link"><?php echo $_GET['user_nama'];?></a></li>
+                        <?php if ($isLoggedIn) : ?>
+                            <li><a href="#" class="nav-link"><?php echo $_GET['user_nama']; ?></a></li>
                             <li><a href="#" class="nav-link">Riwayat</a></li>
                             <li><a href="conf/logout.php" class="nav-link">Logout</a></li>
-                        <?php else: ?>
+                        <?php else : ?>
                             <li><a href="masuk.php" class="nav-link">Login</a></li>
                         <?php endif; ?>
                     </div>
@@ -159,56 +164,58 @@ try {
     </div>
     <div class="content">
         <div class="stage-image">
-            <?php if (isset($gambar_stage)): ?>
+            <?php if (isset($gambar_stage)) : ?>
                 <img src="asset/tmp/stage/<?php echo $gambar_stage; ?>" alt="Gambar Stage">
             <?php endif; ?>
         </div>
         <div class="form-container">
             <div id="inputdata">
                 <div class="form_input">
-                    <form action="conf/log_pesan.php" method="post" enctype="multipart/form-data">
+                    <form id="bookingForm" action="conf/log_pesan.php" method="post" enctype="multipart/form-data">
                         <table>
-                        <tr>
-                            <td><label for="nama_pemesan">Nama </label></td>
-                            <td>: <input type="text" name="nama_pemesan" id="nama_pemesan" required></td>
-                        </tr>
-                        <tr>
-                            <td><label for="tlp_pemesan">No Tlp</label></td>
-                            <td>: <input type="number" name="tlp_pemesan" id="tlp_pemesan" required></td>
-                        </tr>
-                        <tr>
-                            <td><label for="email_pemesan">E-Mail</label></td>
-                            <td>: <input type="email" name="email_pemesan" id="email_pemesan" required></td>
-                        </tr>
-                        <tr>
-                            <td><label for="jenistiket">Pilih Tiket</label></td>
-                            <td>: 
-                            <select name="jenistiket" id="jenistiket" required>
-                                <option value="" selected disabled>Pilih Jenis Tiket</option>
-                                <?php foreach ($ticketTypes as $type): ?>
-                                    <option value="<?php echo $type['jenis']; ?>"><?php echo $type['jenis']; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label for="jumlah">Jumlah</label></td>
-                            <td>: <input type="number" name="jumlah" id="jumlah" value="1"  required></td>
-                        </tr>
-                        <tr>
-                            <td id="errorStock"><p></p></td>
-                        </tr>
-                        <tr>
-                            <td><label for="harga">Harga Satuan</label></td>  
-                            <td>: <input type="text" name="harga" id="harga" disabled></td>
-                        </tr>
-                        <tr>
-                            <td><label for="total">Total Harga</label></td>  
-                            <td>: <input type="text" name="total" id="total" disabled></td>
-                        </tr>
-                        <tr>
-                            <td><button class="button_pesan" type="submit" title="Lakukan Pemesanan">Submit</button></td>
-                        </tr>
+                            <tr>
+                                <td><label for="nama_pemesan">Nama </label></td>
+                                <td>: <input type="text" name="nama_pemesan" id="nama_pemesan" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="tlp_pemesan">No Tlp</label></td>
+                                <td>: <input type="number" name="tlp_pemesan" id="tlp_pemesan" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="email_pemesan">E-Mail</label></td>
+                                <td>: <input type="email" name="email_pemesan" id="email_pemesan" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="jenistiket">Pilih Tiket</label></td>
+                                <td>:
+                                    <select name="jenistiket" id="jenistiket" required>
+                                        <option value="" selected disabled>Pilih Jenis Tiket</option>
+                                        <?php foreach ($ticketTypes as $type) : ?>
+                                            <option value="<?php echo $type['jenis']; ?>"><?php echo $type['jenis']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="jumlah">Jumlah</label></td>
+                                <td>: <input type="number" name="jumlah" id="jumlah" value="1" required></td>
+                            </tr>
+                            <tr>
+                                <td id="errorStock">
+                                    <p></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="harga">Harga Satuan</label></td>
+                                <td>: <input type="text" name="harga" id="harga" disabled></td>
+                            </tr>
+                            <tr>
+                                <td><label for="total">Total Harga</label></td>
+                                <td>: <input type="text" name="total" id="total" disabled></td>
+                            </tr>
+                            <tr>
+                                <td><button class="button_pesan" type="button" onclick="confirmBooking()">Pesan</button></td>
+                            </tr>
                         </table>
                     </form>
                 </div>
@@ -216,6 +223,40 @@ try {
         </div>
     </div>
     <script id="ticketData" type="application/json"><?php echo json_encode($ticketTypes); ?></script>
-    <script src="asset/js/script.js"></script>
+    <script>
+        function confirmBooking() {
+            const ticketData = JSON.parse(document.getElementById('ticketData').textContent);
+            const selectedTicket = document.getElementById('jenistiket').value;
+            const selectedQuantity = document.getElementById('jumlah').value;
+            const namaPemesan = document.getElementById('nama_pemesan').value;
+            const tlpPemesan = document.getElementById('tlp_pemesan').value;
+            const emailPemesan = document.getElementById('email_pemesan').value;
+
+            const ticket = ticketData.find(t => t.jenis === selectedTicket);
+            if (!ticket) {
+                alert('Pilih jenis tiket yang valid');
+                return;
+            }
+
+            const totalHarga = ticket.harga * selectedQuantity;
+            document.getElementById('harga').value = ticket.harga;
+            document.getElementById('total').value = totalHarga;
+
+            const confirmationMessage = `
+                Nama Pemesan: ${namaPemesan}\n
+                No Tlp: ${tlpPemesan}\n
+                Email: ${emailPemesan}\n
+                Jenis Tiket: ${selectedTicket}\n
+                Jumlah: ${selectedQuantity}\n
+                Harga Satuan: ${ticket.harga}\n
+                Total Harga: ${totalHarga}\n\n
+                Apakah Anda ingin melanjutkan pemesanan?`;
+
+            if (confirm(confirmationMessage)) {
+                document.getElementById('bookingForm').submit();
+            }
+        }
+    </script>
 </body>
+
 </html>

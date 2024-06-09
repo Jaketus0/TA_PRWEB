@@ -2,11 +2,13 @@
     include 'conf/connection.php';
     session_start();
     $isLoggedIn = isset($_SESSION['user_email']) && $_SESSION['user_email'] !== null;
-    $query = "SELECT user_nama FROM user WHERE user_email = '".$_SESSION['user_email']."'";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_assoc($result);
-    $user_nama = $row['user_nama'];
-    $_GET['user_nama'] = $user_nama;
+    if($isLoggedIn){
+        $query = "SELECT user_nama FROM user WHERE user_email = '".$_SESSION['user_email']."'";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($result);
+        $user_nama = $row['user_nama'];
+        $_GET['user_nama'] = $user_nama;
+    }
     $concertId = $_GET['id'];  
     $query = "SELECT * FROM data_konser WHERE datakonser_id = $concertId";
     $result = mysqli_query($conn, $query);
