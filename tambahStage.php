@@ -35,7 +35,7 @@ if (isset($_POST['submitStage'])) {
                 $gambarDestination = 'asset/tmp/stage/' . $gambarNameNew;
                 move_uploaded_file($gambarTmpName, $gambarDestination);
 
-                $query = "INSERT INTO stage (datakonser_id, gambar_stage, maps) VALUES ('$datakonser_id', '$gambarDestination', '$maps')";
+                $query = "INSERT INTO stage (datakonser_id, gambar_stage, maps) VALUES ('$datakonser_id', '$gambarNameNew', '$maps')";
                 if (mysqli_query($conn, $query)) {
                     $success = "Stage berhasil ditambahkan.";
                 } else {
@@ -95,7 +95,7 @@ if (isset($_POST['submitStage'])) {
                     <div id="myDropdown" class="dropdown-content">
                         <?php if (isset($_SESSION['user_email'])): ?>
                             <li><a href="#" class="nav-link"><?php echo $_SESSION['user_email']; ?></a></li>
-                            <li><a href="#" class="nav-link">Riwayat</a></li>
+                            <li><a href="riwayat.php" class="nav-link">Riwayat</a></li>
                             <li><a href="conf/logout.php" class="nav-link">Logout</a></li>
                         <?php else: ?>
                             <li><a href="masuk.php" class="nav-link">Login</a></li>

@@ -562,10 +562,11 @@ iframe {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-.content {
+.content_form {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 5vh;
 }
 
 .stage-image{ 
@@ -589,4 +590,50 @@ iframe {
     display: flex;
     justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+
+}
+
+.form_pemesanan{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.form_pemesanan input {
+    border: none;
+    border-bottom: #000 1px solid;
+    background:none;
+}
+
+.form_pemesanan select {
+    outline: none;
+    border: none;
+    border-bottom: #000 1px solid;
+    background:none;
+}
+
+/* buat riwayat.php design */
+.daftar_riwayat {
+    margin-top: 20vh;
+    font-family: Arial;
+    text-align: center;
+}
+
+.daftar_riwayat table {
+    width: 100%;
+    border-collapse: collapse;
+    border: #000 solid 1px;
+
+}
+
+.daftar_riwayat th, .daftar_riwayat td {
+    padding-left: 20px;
+    padding-right: 20px;
+    border: #000 solid 1px;
 }

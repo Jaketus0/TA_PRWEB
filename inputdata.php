@@ -53,7 +53,7 @@
                     <div id="myDropdown" class="dropdown-content">
                         <?php if ($isLoggedIn): ?>
                             <li><a href="#" class="nav-link"><?php echo $_GET['user_nama'];?></a></li>
-                            <li><a href="#" class="nav-link">Riwayat</a></li>
+                            <li><a href="riwayat.php" class="nav-link">Riwayat</a></li>
                             <li><a href="conf/logout.php" class="nav-link">Logout</a></li>
                         <?php else: ?>
                             <li><a href="masuk.php" class="nav-link">Login</a></li>

@@ -108,3 +108,37 @@ document.addEventListener("DOMContentLoaded", function() {
   selectElement.addEventListener('change', updatePrice);
   jumlahElement.addEventListener('input', updatePrice);
 });
+
+// for alert pemesanan.php
+function confirmBooking() {
+  const ticketData = JSON.parse(document.getElementById('ticketData').textContent);
+  const selectedTicket = document.getElementById('jenistiket').value;
+  const selectedQuantity = document.getElementById('jumlah').value;
+  const namaPemesan = document.getElementById('nama_pemesan').value;
+  const tlpPemesan = document.getElementById('tlp_pemesan').value;
+  const emailPemesan = document.getElementById('email_pemesan').value;
+
+  const ticket = ticketData.find(t => t.jenis === selectedTicket);
+  if (!ticket) {
+      alert('Pilih jenis tiket yang valid');
+      return;
+  }
+
+  const totalHarga = ticket.harga * selectedQuantity;
+  document.getElementById('harga').value = ticket.harga;
+  document.getElementById('total').value = totalHarga;
+
+  const confirmationMessage = `
+      Nama Pemesan: ${namaPemesan}\n
+      No Tlp: ${tlpPemesan}\n
+      Email: ${emailPemesan}\n
+      Jenis Tiket: ${selectedTicket}\n
+      Jumlah: ${selectedQuantity}\n
+      Harga Satuan: ${ticket.harga}\n
+      Total Harga: ${totalHarga}\n\n
+      Apakah Anda ingin melanjutkan pemesanan?`;
+
+  if (confirm(confirmationMessage)) {
+      document.getElementById('bookingForm').submit();
+  }
+}

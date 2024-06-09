@@ -149,7 +149,7 @@ try {
                     <div id="myDropdown" class="dropdown-content">
                         <?php if ($isLoggedIn) : ?>
                             <li><a href="#" class="nav-link"><?php echo $_GET['user_nama']; ?></a></li>
-                            <li><a href="#" class="nav-link">Riwayat</a></li>
+                            <li><a href="riwayat.php" class="nav-link">Riwayat</a></li>
                             <li><a href="conf/logout.php" class="nav-link">Logout</a></li>
                         <?php else : ?>
                             <li><a href="masuk.php" class="nav-link">Login</a></li>
@@ -162,34 +162,34 @@ try {
     <div class="title">
         <h1><?php if (isset($concertName)) echo $concertName; ?></h1>
     </div>
-    <div class="content">
+    <div class="content_form">
         <div class="stage-image">
             <?php if (isset($gambar_stage)) : ?>
                 <img src="asset/tmp/stage/<?php echo $gambar_stage; ?>" alt="Gambar Stage">
             <?php endif; ?>
         </div>
         <div class="form-container">
-            <div id="inputdata">
-                <div class="form_input">
+            <div id="input_pemesanan">
+                <div class="form_pemesanan">
                     <form id="bookingForm" action="conf/log_pesan.php" method="post" enctype="multipart/form-data">
                         <table>
                             <tr>
-                                <td><label for="nama_pemesan">Nama </label></td>
+                                <td><label for="nama_pemesan"><b>Nama</b></label></td>
                                 <td>: <input type="text" name="nama_pemesan" id="nama_pemesan" required></td>
                             </tr>
                             <tr>
-                                <td><label for="tlp_pemesan">No Tlp</label></td>
+                                <td><label for="tlp_pemesan"><b>No Tlp</b></label></td>
                                 <td>: <input type="number" name="tlp_pemesan" id="tlp_pemesan" required></td>
                             </tr>
                             <tr>
-                                <td><label for="email_pemesan">E-Mail</label></td>
+                                <td><label for="email_pemesan"><b>E-Mail</b></label></td>
                                 <td>: <input type="email" name="email_pemesan" id="email_pemesan" required></td>
                             </tr>
                             <tr>
-                                <td><label for="jenistiket">Pilih Tiket</label></td>
+                                <td><label for="jenistiket"><b>Pilih Tiket</b></label></td>
                                 <td>:
                                     <select name="jenistiket" id="jenistiket" required>
-                                        <option value="" selected disabled>Pilih Jenis Tiket</option>
+                                        <option value="" selected disabled><b>Pilih Jenis Tiket</b></option>
                                         <?php foreach ($ticketTypes as $type) : ?>
                                             <option value="<?php echo $type['jenis']; ?>"><?php echo $type['jenis']; ?></option>
                                         <?php endforeach; ?>
@@ -197,7 +197,7 @@ try {
                                 </td>
                             </tr>
                             <tr>
-                                <td><label for="jumlah">Jumlah</label></td>
+                                <td><label for="jumlah"><b>Jumlah</b></label></td>
                                 <td>: <input type="number" name="jumlah" id="jumlah" value="1" required></td>
                             </tr>
                             <tr>
@@ -206,11 +206,11 @@ try {
                                 </td>
                             </tr>
                             <tr>
-                                <td><label for="harga">Harga Satuan</label></td>
+                                <td><label for="harga"><b>Harga Satuan</b></label></td>
                                 <td>: <input type="text" name="harga" id="harga" disabled></td>
                             </tr>
                             <tr>
-                                <td><label for="total">Total Harga</label></td>
+                                <td><label for="total"><b>Total Harga</b></label></td>
                                 <td>: <input type="text" name="total" id="total" disabled></td>
                             </tr>
                             <tr>
@@ -223,40 +223,7 @@ try {
         </div>
     </div>
     <script id="ticketData" type="application/json"><?php echo json_encode($ticketTypes); ?></script>
-    <script>
-        function confirmBooking() {
-            const ticketData = JSON.parse(document.getElementById('ticketData').textContent);
-            const selectedTicket = document.getElementById('jenistiket').value;
-            const selectedQuantity = document.getElementById('jumlah').value;
-            const namaPemesan = document.getElementById('nama_pemesan').value;
-            const tlpPemesan = document.getElementById('tlp_pemesan').value;
-            const emailPemesan = document.getElementById('email_pemesan').value;
-
-            const ticket = ticketData.find(t => t.jenis === selectedTicket);
-            if (!ticket) {
-                alert('Pilih jenis tiket yang valid');
-                return;
-            }
-
-            const totalHarga = ticket.harga * selectedQuantity;
-            document.getElementById('harga').value = ticket.harga;
-            document.getElementById('total').value = totalHarga;
-
-            const confirmationMessage = `
-                Nama Pemesan: ${namaPemesan}\n
-                No Tlp: ${tlpPemesan}\n
-                Email: ${emailPemesan}\n
-                Jenis Tiket: ${selectedTicket}\n
-                Jumlah: ${selectedQuantity}\n
-                Harga Satuan: ${ticket.harga}\n
-                Total Harga: ${totalHarga}\n\n
-                Apakah Anda ingin melanjutkan pemesanan?`;
-
-            if (confirm(confirmationMessage)) {
-                document.getElementById('bookingForm').submit();
-            }
-        }
-    </script>
+    <script src="asset/js/script.js"></script>
 </body>
 
 </html>

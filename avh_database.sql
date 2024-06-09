@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2024 at 10:41 AM
+-- Generation Time: Jun 09, 2024 at 01:42 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -155,7 +155,7 @@ CREATE TABLE `stage` (
 INSERT INTO `stage` (`stage_id`, `datakonser_id`, `gambar_stage`, `maps`) VALUES
 (1, 2, 'treasure_stage.png', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.341269416672!2d106.79690177750263!3d-6.2186487777040105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f14d30079f01%3A0x2e74f2341fff266d!2sStadion%20Utama%20Gelora%20Bung%20Karno!5e0!3m2!1sid!2sid!4v1717665903103!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>'),
 (2, 3, 'do_stage.png', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.29897114237!2d106.84094557477705!3d-6.22425379376382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f38cc147f145%3A0x3225ec9b7b7adc0c!2sThe%20Kasablanka!5e0!3m2!1sid!2sid!4v1717668589757!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>'),
-(3, 4, 'uploads/6664183caea323.36565341.png', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.019607944134!2d110.37157287484419!3d-7.787745392232111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a582db4341589%3A0xd86754d15099c4c9!2sStadion%20Kridosono%20Yogyakarta!5e0!3m2!1sid!2sid!4v1717834539562!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>');
+(3, 4, '66658cc43878f2.69817011.jpg', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.0196079444395!2d110.37156751052348!3d-7.787745392199721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a582db4341589%3A0xd86754d15099c4c9!2sKridosono%20Stadium!5e0!3m2!1sen!2sid!4v1717931197599!5m2!1sen!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>');
 
 -- --------------------------------------------------------
 
@@ -245,7 +245,7 @@ ALTER TABLE `data_konser`
 -- AUTO_INCREMENT for table `invoice`
 --
 ALTER TABLE `invoice`
-  MODIFY `pemesanan_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pemesanan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `jenis_tiket`
