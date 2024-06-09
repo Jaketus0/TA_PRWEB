@@ -12,24 +12,26 @@ concertListItems.forEach(listItem => {
   listItem.addEventListener('click', handleConcertClick);
 });
 
-// utk hamburger button
+// for hamburger button
 const mainMenu = document.querySelector('.mainMenu');
 const closeMenu = document.querySelector('.closeMenu');
 const openMenu = document.querySelector('.openMenu');
 const menu_items = document.querySelectorAll('nav .mainMenu li a');
-openMenu.addEventListener('click',show);
-closeMenu.addEventListener('click',close);
-// untuk tutup menu pas klik salah satu menu item
+
+openMenu.addEventListener('click', show);
+closeMenu.addEventListener('click', close);
+
+// for closing menu when clicking one of the menu items
 menu_items.forEach(item => {
-    item.addEventListener('click',function(){
-        close();
-    })
-})
-function show(){
+    item.addEventListener('click', close);
+});
+
+function show() {
     mainMenu.style.display = 'flex';
     mainMenu.style.top = '0';
 }
-function close(){
+
+function close() {
     mainMenu.style.top = '-100%';
 }
 
@@ -37,28 +39,39 @@ function close(){
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
+
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
+    for (var i = 0; i < dropdowns.length; i++) {
       var openDropdown = dropdowns[i];
       if (openDropdown.classList.contains('show')) {
         openDropdown.classList.remove('show');
       }
     }
   }
-} 
+};
 
-// for realtime update harga total
+// for real-time update of total price
 document.addEventListener("DOMContentLoaded", function() {
-  const ticketData = JSON.parse(document.getElementById('ticketData').textContent);
+  const ticketDataElement = document.getElementById('ticketData');
+  if (!ticketDataElement) {
+      console.error('ticketData element not found');
+      return;
+  }
+  
+  const ticketData = JSON.parse(ticketDataElement.textContent);
   const selectElement = document.getElementById('jenistiket');
   const hargaElement = document.getElementById('harga');
   const jumlahElement = document.getElementById('jumlah');
   const totalElement = document.getElementById('total');
   const errorStockElement = document.getElementById('errorStock'); // Add this line
+
+  if (!selectElement || !hargaElement || !jumlahElement || !totalElement || !errorStockElement) {
+      console.error('One or more elements not found');
+      return;
+  }
 
   function formatCurrency(amount) {
       return new Intl.NumberFormat('id-ID', {
@@ -69,15 +82,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function updatePrice() {
       const selectedTicket = selectElement.value;
-      const quantity = jumlahElement.value;
+      const quantity = parseInt(jumlahElement.value, 10) || 0;
       let unitPrice = 0;
-      let stock = 0; // Add this line
+      let stock = 0;
+
       ticketData.forEach(ticket => {
           if (ticket.jenis === selectedTicket) {
               unitPrice = ticket.harga;
-              stock = ticket.stock; // Add this line
+              stock = ticket.stock;
           }
       });
+
       const totalPrice = unitPrice * quantity;
       hargaElement.value = formatCurrency(unitPrice);
       totalElement.value = formatCurrency(totalPrice);
