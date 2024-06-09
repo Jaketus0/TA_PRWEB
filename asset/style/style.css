@@ -620,20 +620,36 @@ iframe {
 
 /* buat riwayat.php design */
 .daftar_riwayat {
-    margin-top: 20vh;
+    margin-top: 25vh;
     font-family: Arial;
     text-align: center;
+    display: flex;
+    justify-content: center;   
 }
 
 .daftar_riwayat table {
-    width: 100%;
+    margin-top: 2vh;
+    width: 90%;
     border-collapse: collapse;
     border: #000 solid 1px;
-
 }
 
 .daftar_riwayat th, .daftar_riwayat td {
     padding-left: 20px;
     padding-right: 20px;
     border: #000 solid 1px;
+}
+
+.daftar_riwayat th{
+    background-color: #000;
+    color: white;
+}
+
+.deletee {
+    background: none;
+    transition: 0.3s;
+}
+.deletee:hover {
+    color: red;
+    transition: 0.3s;
 }

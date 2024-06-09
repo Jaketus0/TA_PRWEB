@@ -122,42 +122,42 @@ try {
 
 <body>
     <div id="navbar">
-        <nav>
-            <div class="logo"><img src="asset/img/AVH_white.png" alt="Logo" onclick="window.location.href='index.php'"></div>
-            <div class="openMenu"><i class="fa fa-bars"></i></div>
-            <ul class="mainMenu">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="ticket.php">Ticket</a></li>
-                <?php
-                if (isset($_SESSION['email']) && $_SESSION['email'] === 'admin@gmail.com') {
-                    echo '<li><a href="inputdata.php">Input</a></li>';
-                }
-                ?>
-                <li><a href="#">About</a></li>
-                <li id='pencarian'>
-                    <form action="search.php" method="post">
-                        <input type="text" name="search" id="search" placeholder="Search">
-                        <button type="submit" id="searchb"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
-                    </form>
-                </li>
-                <div class="closeMenu"><i class="fa fa-times"></i></div>
-                <span class="icons">
-                    <i class="fab fa-github"></i>
-                </span>
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn"><i class="fa-solid fa-user"></i></button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <?php if ($isLoggedIn) : ?>
-                            <li><a href="#" class="nav-link"><?php echo $_GET['user_nama']; ?></a></li>
-                            <li><a href="riwayat.php" class="nav-link">Riwayat</a></li>
-                            <li><a href="conf/logout.php" class="nav-link">Logout</a></li>
-                        <?php else : ?>
-                            <li><a href="masuk.php" class="nav-link">Login</a></li>
-                        <?php endif; ?>
+            <nav>
+                <div class="logo"><img src="asset/img/AVH_white.png" alt="Logo" onclick="window.location.href='index.php'"></div>
+                <div class="openMenu"><i class="fa fa-bars"></i></div>
+                <ul class="mainMenu">
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="ticket.php">Ticket</a></li>
+                    <?php
+                    if (isset($_SESSION['email']) && $_SESSION['email'] === 'admin@gmail.com') {
+                        echo '<li><a href="inputdata.php">Input</a></li>';
+                    }
+                    ?>
+                    <li><a href="#">About</a></li>
+                    <li id='pencarian'>
+                        <form action="search.php" method="post">
+                            <input type="text" name="search" id="search" placeholder="Search">
+                            <button type="submit" id="searchb"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
+                        </form>
+                    </li>
+                    <div class="closeMenu"><i class="fa fa-times"></i></div>
+                    <span class="icons">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn"><i class="fa-solid fa-user"></i></button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <?php if ($isLoggedIn) : ?>
+                                <li><a href="#" class="nav-link"><?php echo $_GET['user_nama']; ?></a></li>
+                                <li><a href="riwayat.php" class="nav-link">Riwayat</a></li>
+                                <li><a href="conf/logout.php" class="nav-link">Logout</a></li>
+                            <?php else : ?>
+                                <li><a href="masuk.php" class="nav-link">Login</a></li>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                </div>
-            </ul>
-        </nav>
+                </ul>
+            </nav>
     </div>
     <div class="title">
         <h1><?php if (isset($concertName)) echo $concertName; ?></h1>
